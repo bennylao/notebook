@@ -31,13 +31,16 @@ Block of comments
 """
 ```
 
-### Basic Data Types
+## Basic Data Types
 
 ```int```: Integer<br>
 ```float```: Float<br>
-complex: Complex Number
-bool: Boolean
-str: String
+```complex```: Complex Number<br>
+```bool```: Boolean<br>
+```str```: String<br>
+
+
+```int()```, ```float```, ```str()``` convert data types.
 
 
 ### String
@@ -97,9 +100,21 @@ days = 7
 print("A week has %d days", %days) 
 ```
 
-### Common Function
+## Common Built-in Functions
 ```type``` Return the type of variable<br>
 ```id``` Return the id of variable<br>
 
-### To Do
+### If
+```if```, ```elif```, ```else```.
+
+Shorthand if
+```
+if (x == y): print("x and y are equal")
+```
+Shorthand if-else
+```
+print("true") if x > y else print("false")
+```
+
+## To Do
 Dynamic Typed vs Statically Typed
