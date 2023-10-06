@@ -118,3 +118,7 @@ print("true") if x > y else print("false")
 
 ## To Do
 Dynamic Typed vs Statically Typed
+binary search
+mergesort
+insertionsort
+floyds algorithm
