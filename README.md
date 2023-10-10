@@ -100,6 +100,55 @@ days = 7
 print("A week has %d days", %days) 
 ```
 
+## Operator
+### Assignment Operators
+```=```
+```+=```
+
+
+### Logical Operator
+```and```
+```or```
+```not```
+
+### Bitwise Operator
+```&``` Binary AND<br>
+```
+x = 0b10100
+y = 0b01011
+
+x & y
+# output is 0
+# x & y -> 00000 -> 0
+```
+```|``` Binary OR<br>
+```~```
+```^```
+```<<```
+```>>```
+
+### Membership Operator
+```in```
+```not in```
+
+### Identity Operator
+```is```
+```is not```
+
+### Operator Precedence
+Table===
+
+### Associativity of Operator of the same priority
+if operator has the same priority, it usually evaluated from *LEFT to RIGHT*.
+However, for exponent operator ```**```, it is evaluated from *RIGHT to LEFT*.
+```
+# LEFT-RIGHT associativity
+print(5 + 6 - 7) # output is 4
+
+# RIGHT-LEFT associativity
+print(2 ** 3 ** 2) # output is 512
+```
+
 ## Common Built-in Functions
 ```type``` Return the type of variable<br>
 ```id``` Return the id of variable<br>
@@ -114,6 +163,22 @@ if (x == y): print("x and y are equal")
 Shorthand if-else
 ```
 print("true") if x > y else print("false")
+```
+
+### For and While
+
+```
+# for-else loop
+for condition:
+    do something
+else:
+    suite # only execute when the for loop is completed (without break)
+    
+# while-else loop
+while condition:
+    do something
+else:
+    suite # only execute when the while loop is completed (without break)
 ```
 
 ## To Do
