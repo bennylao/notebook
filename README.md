@@ -183,3 +183,7 @@ else:
 
 ## To Do
 Dynamic Typed vs Statically Typed
+binary search
+mergesort
+insertionsort
+floyds algorithm
