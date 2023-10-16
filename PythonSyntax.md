@@ -100,6 +100,13 @@ days = 7
 print("A week has %d days", %days) 
 ```
 
+#### String Functions
+```
+my_string = "This is a sample string."
+my_string.index("sample", 5, 20) # substring, start_pos, end_pos
+my_string.index("apple") # Valueerror
+```
+
 ## Operator
 ### Assignment Operators
 ```=```
@@ -179,6 +186,57 @@ while condition:
     do something
 else:
     suite # only execute when the while loop is completed (without break)
+```
+
+### List
+
+```mylist.sort()```: sort a list. However, it returns nothing.
+```
+mylist.sort(); # sort the list
+
+new_list = mylist.sort() # new_list is none because sort() return nothing
+```
+
+### Tuple
+
+```
+# create empty tuple
+tup1 = ()
+
+# create tuple with only one element
+tup2 = (123,)
+
+# if single element tuple is defined without "," after the element, it will not created it as a tuple
+int_tup = (123)
+print(type(int_tup)) # type is int
+```
+
+### Set
+set is an unordered collection with no duplicate elements and set is immutable.
+```
+myset = {1, 2, 3}
+
+new_set = set(["a", "b, "c", "b"])
+print(new_Set) # it prints {a, b, c} or {c, a, b} or other combinations.
+```
+
+#### Set Operator
+```
+setA = {1, 2, 3, 4}
+setB = {2, 4, 6, 8}
+
+setA & setB # items in both setA and setB
+setA | setB # items in either setA and setB
+setA - setB # itmes in setA but not in setB
+setA ^ setB # items in setA but not in setB AND items in setB but not in setA
+
+
+```
+
+### Dictionary
+
+```
+mydict = {"key1": value1, "key2", value2}
 ```
 
 ## To Do
