@@ -20,52 +20,79 @@ class ChessBoard:
         chess_board = str("\n" + "-" * 65 + "\n").join(row)
         print(chess_board)
 
-    @staticmethod
-    def __check_move(chess_list, start_pos, end_pos):
+    def __checkmate(self, side):
+        match side:
+            case "w":
+                if not any(chess.display() == chr(9818) for chess in self.__blacks):
+                    return True
+            case "b":
+                if not any(chess.display() == chr(9812) for chess in self.__whites):
+                    return True
+
+    def __move_chess(self, start_pos, end_pos, side):
         # check if starting position and ending position are both on the board
         if not ("a" <= start_pos[0] <= "h" and "a" <= end_pos[0] <= "h" and
                 1 <= int(start_pos[1]) <= 8 and 1 <= int(end_pos[1]) <= 8):
             return False
-        for chess in chess_list:
+        ally_list = []
+        enemy_list = []
+        match side:
+            case "w":
+                ally_list = self.__whites
+                enemy_list = self.__blacks
+            case "b":
+                ally_list = self.__blacks
+                enemy_list = self.__whites
+        for chess in ally_list:
             # check if there is ally on the starting position for moving
             # also check if there is another ally on the ending position, which blocks the move
-            if chess.get_pos() == start_pos and not any(item.get_pos() == end_pos for item in chess_list):
+            if chess.get_pos() == start_pos and not any(item.get_pos() == end_pos for item in ally_list):
                 # check valid chess move
                 chess.move(end_pos)
+                for enemy in enemy_list:
+                    if enemy.get_pos() == end_pos:
+                        enemy_list.remove(enemy)
+                        break
                 return True
         else:
             return False
 
     def start_game(self):
         self.__display()
-        win = False
+        is_win = False
         is_valid = False
-        while win is False:
+        while is_win is False:
             print("White's Turn!")
             while is_valid is False:
                 [white_start_pos, white_end_pos] = [
                     input("Please enter the position of the chest you wanna move from: ").lower(),
                     input("Please enter the position of the chest you wanna move to: ").lower()]
-                is_valid = self.__check_move(self.__whites, white_start_pos, white_end_pos)
+                is_valid = self.__move_chess(white_start_pos, white_end_pos, "w")
                 if not is_valid:
                     print("move is invalid!")
             else:
                 is_valid = False
-            self.__display()
+                self.__display()
+                if self.__checkmate("w"):
+                    print("***Congratulations***")
+                    print("White won!")
+                    break
 
             print("Black's Turn!")
             while is_valid is False:
                 [black_start_pos, black_end_pos] = [
                     input("Please enter the position of the chest you wanna move from: ").lower(),
                     input("Please enter the position of the chest you wanna move to: ").lower()]
-                is_valid = self.__check_move(self.__blacks, black_start_pos, black_end_pos)
+                is_valid = self.__move_chess(black_start_pos, black_end_pos, "b")
                 if not is_valid:
                     print("move is invalid!")
             else:
                 is_valid = False
-            self.__display()
-
-
+                self.__display()
+                if self.__checkmate("b"):
+                    print("***Congratulations***")
+                    print("Black won!")
+                    break
 
 
 class Chess:
