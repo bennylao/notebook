@@ -59,14 +59,22 @@ class ChessBoard:
 
     def start_game(self):
         self.__display()
+        help_string = ("In each turn, player has to enter two positions." +
+                       "The chess on the first specified position will move to the second position " +
+                       "if they are valid.")
         is_win = False
         is_valid = False
         while is_win is False:
             print("White's Turn!")
             while is_valid is False:
-                [white_start_pos, white_end_pos] = [
-                    input("Please enter the position of the chest you wanna move from: ").lower(),
-                    input("Please enter the position of the chest you wanna move to: ").lower()]
+                white_start_pos = input("Please enter the position of the chest you wanna move from: ").lower()
+                if white_start_pos == "-help":
+                    print(help_string)
+                    continue
+                white_end_pos = input("Please enter the position of the chest you wanna move to: ").lower()
+                if white_end_pos == "-help":
+                    print(help_string)
+                    continue
                 is_valid = self.__move_chess(white_start_pos, white_end_pos, "w")
                 if not is_valid:
                     print("move is invalid!")
@@ -80,9 +88,14 @@ class ChessBoard:
 
             print("Black's Turn!")
             while is_valid is False:
-                [black_start_pos, black_end_pos] = [
-                    input("Please enter the position of the chest you wanna move from: ").lower(),
-                    input("Please enter the position of the chest you wanna move to: ").lower()]
+                black_start_pos = input("Please enter the position of the chest you wanna move from: ").lower()
+                if black_start_pos == "-help":
+                    print(help_string)
+                    continue
+                black_end_pos = input("Please enter the position of the chest you wanna move to: ").lower()
+                if black_end_pos == "-help":
+                    print(help_string)
+                    continue
                 is_valid = self.__move_chess(black_start_pos, black_end_pos, "b")
                 if not is_valid:
                     print("move is invalid!")
