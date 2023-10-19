@@ -50,7 +50,8 @@ class ChessBoard:
             if any(enemy.get_pos() == end_pos for enemy in enemy_list):
                 raise InvalidMoveException(end_pos)
             if (movement == valid_moving_range[1] and
-                    any(enemy.get_pos() == end_pos[0] + str(int(end_pos[1]) - valid_moving_range[0]) for enemy in enemy_list)):
+                    any(enemy.get_pos() == end_pos[0] + str(int(end_pos[1]) - valid_moving_range[0])
+                        for enemy in enemy_list)):
                 raise InvalidMoveException(end_pos)
 
     def __move_chess(self, start_pos, end_pos, side):
