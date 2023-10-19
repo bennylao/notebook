@@ -30,13 +30,16 @@ class ChessBoard:
                     return True
 
     def __move_pawn(self, start_pos, end_pos, side):
+        ally_list = []
         enemy_list = []
         valid_moving_range = ()
         match side:
             case "w":
+                ally_list = self.__whites
                 enemy_list = self.__blacks
                 valid_moving_range = (1, 2)
             case "b":
+                ally_list = self.__blacks
                 enemy_list = self.__whites
                 valid_moving_range = (-1, -2)
         movement = int(end_pos[1]) - int(start_pos[1])
@@ -50,9 +53,86 @@ class ChessBoard:
             if any(enemy.get_pos() == end_pos for enemy in enemy_list):
                 raise InvalidMoveException(end_pos)
             if (movement == valid_moving_range[1] and
-                    any(enemy.get_pos() == end_pos[0] + str(int(end_pos[1]) - valid_moving_range[0])
-                        for enemy in enemy_list)):
+                    (any(enemy.get_pos() == end_pos[0] + str(int(end_pos[1]) - valid_moving_range[0])
+                         for enemy in enemy_list) or
+                     any(ally.get_pos() == end_pos[0] + str(int(end_pos[1]) - valid_moving_range[0])
+                         for ally in ally_list))):
                 raise InvalidMoveException(end_pos)
+
+    @staticmethod
+    def __check_rook(chess, new_pos, ally_list, enemy_list):
+        if new_pos[0] != chess.get_pos()[0]:
+            for i in range(min(ord(new_pos[0]), ord(chess.get_pos()[0])) + 1,
+                           max(ord(new_pos[0]), ord(chess.get_pos()[0]))):
+                if (any(ally.get_pos() == chr(i) + new_pos[1] for ally in ally_list) or
+                        any(enemy.get_pos() == chr(i) + new_pos[1] for enemy in enemy_list)):
+                    raise InvalidMoveException(new_pos)
+        else:
+            for i in range(min(int(new_pos[1]), int(chess.get_pos()[1])) + 1,
+                           max(int(new_pos[1]), int(chess.get_pos()[1]))):
+                if (any(ally.get_pos() == new_pos[0] + str(i) for ally in ally_list) or
+                        any(enemy.get_pos() == chr(i) + new_pos[1] for enemy in enemy_list)):
+                    raise InvalidMoveException(new_pos)
+
+    @staticmethod
+    def __check_bishop(chess, new_pos, ally_list, enemy_list):
+        col_diff = ord(new_pos[0]) - ord(chess.get_pos()[0])
+        row_diff = int(new_pos[1]) - int(chess.get_pos()[1])
+        col_list = []
+        row_list = []
+        for i in range(min(ord(new_pos[0]), ord(chess.get_pos()[0])) + 1,
+                       max(ord(new_pos[0]), ord(chess.get_pos()[0]))):
+            col_list.append(chr(i))
+        for i in range(min(int(new_pos[1]), int(chess.get_pos()[1])) + 1,
+                       max(int(new_pos[1]), int(chess.get_pos()[1]))):
+            row_list.append(str(i))
+        if col_diff < 0:
+            col_list.reverse()
+        if row_diff < 0:
+            row_list.reverse()
+        move_path = list(map(lambda col, row: col + row, col_list, row_list))
+        if (any(ally.get_pos() in move_path for ally in ally_list) or
+                any(enemy.get_pos() in move_path for enemy in enemy_list)):
+            raise InvalidMoveException(new_pos)
+
+    # this function does not check the moves of pawn
+    @staticmethod
+    def __check_basic_move(chess, new_pos, ally_list, enemy_list):
+        match chess.get_unicode():
+            # moves of king
+            case 9812 | 9818:
+                if abs(ord(new_pos[0]) - ord(chess.get_pos()[0])) > 1 or abs(
+                        int(new_pos[1]) - int(chess.get_pos()[1])) > 1:
+                    raise InvalidMoveException(new_pos)
+            # moves of queen
+            case 9813 | 9819:
+                if not (new_pos[0] == chess.get_pos()[0] or new_pos[1] == chess.get_pos()[1] or
+                        abs(ord(new_pos[0]) - ord(chess.get_pos()[0])) == abs(ord(new_pos[1]) - ord(chess.get_pos()[1]))
+                        ):
+                    raise InvalidMoveException(new_pos)
+                if abs(ord(new_pos[0]) - ord(chess.get_pos()[0])) == abs(ord(new_pos[1]) - ord(chess.get_pos()[1])):
+                    ChessBoard.__check_bishop(chess, new_pos, ally_list, enemy_list)
+                else:
+                    ChessBoard.__check_rook(chess, new_pos, ally_list, enemy_list)
+
+            # moves of rook
+            case 9814 | 9820:
+                if not (new_pos[0] == chess.get_pos()[0] or new_pos[1] == chess.get_pos()[1]):
+                    raise InvalidMoveException(new_pos)
+                ChessBoard.__check_rook(chess, new_pos, ally_list, enemy_list)
+
+            # moves of bishop
+            case 9815 | 9821:
+                if not abs(ord(new_pos[0]) - ord(chess.get_pos()[0])) == abs(ord(new_pos[1]) - ord(chess.get_pos()[1])):
+                    raise InvalidMoveException(new_pos)
+                ChessBoard.__check_bishop(chess, new_pos, ally_list, enemy_list)
+
+            # moves of knight
+            case 9816 | 9822:
+                row_move = abs(int(new_pos[1]) - int(chess.get_pos()[1]))
+                col_move = abs(ord(new_pos[0]) - ord(chess.get_pos()[0]))
+                if not (2 >= col_move >= 1 == abs(row_move - col_move) and 1 <= row_move <= 2):
+                    raise InvalidMoveException(new_pos)
 
     def __move_chess(self, start_pos, end_pos, side):
         # check if starting position and ending position are both on the board
@@ -73,7 +153,7 @@ class ChessBoard:
         for chess in ally_list:
             # check if there is ally on the starting position for moving
             # also check if there is another ally on the ending position, which blocks the move
-            if chess.get_pos() == start_pos and not any(item.get_pos() == end_pos for item in ally_list):
+            if chess.get_pos() == start_pos and not any(ally.get_pos() == end_pos for ally in ally_list):
                 # check valid chess move
                 try:
                     # if it is a pawn
@@ -81,7 +161,7 @@ class ChessBoard:
                         self.__move_pawn(start_pos, end_pos, side)
                         chess.move(end_pos)
                     else:
-                        chess.check_basic_move(end_pos)
+                        self.__check_basic_move(chess, end_pos, ally_list, enemy_list)
                         chess.move(end_pos)
                 except InvalidMoveException as e:
                     print(e)
@@ -169,35 +249,6 @@ class Chess:
 
     def translate_pos(self):
         return 8 - int(self.__position[1]), ord(self.__position[0]) - 97
-
-    # this function does not check the moves of pawn
-    def check_basic_move(self, new_pos):
-        match self.__unicode:
-            # moves of king
-            case 9812 | 9818:
-                if abs(ord(new_pos[0]) - ord(self.__position[0])) > 1 or abs(
-                        int(new_pos[1]) - int(self.__position[1])) > 1:
-                    raise InvalidMoveException(new_pos)
-            # moves of queen
-            case 9813 | 9818:
-                if not (new_pos[0] == self.__position[0] or new_pos[1] == self.__position[1] or
-                        abs(ord(new_pos[0]) - ord(self.__position[0])) == abs(ord(new_pos[1]) - ord(self.__position[1]))
-                        ):
-                    raise InvalidMoveException(new_pos)
-            # moves of rook
-            case 9814 | 9820:
-                if not (new_pos[0] == self.__position[0] or new_pos[1] == self.__position[1]):
-                    raise InvalidMoveException(new_pos)
-            # moves of bishop
-            case 9815 | 9821:
-                if not abs(ord(new_pos[0]) - ord(self.__position[0])) == abs(ord(new_pos[1]) - ord(self.__position[1])):
-                    raise InvalidMoveException(new_pos)
-            # moves of knight
-            case 9816 | 9822:
-                row_move = abs(int(new_pos[1]) - int(self.__position[1]))
-                col_move = abs(ord(new_pos[0]) - ord(self.__position[0]))
-                if not (2 >= col_move >= 1 == abs(row_move - col_move) and 1 <= row_move <= 2):
-                    raise InvalidMoveException(new_pos)
 
     def move(self, new_position):
         self.__position = new_position
