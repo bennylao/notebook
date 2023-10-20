@@ -1,1 +1,1 @@
-print(chr(9814))
+print(__name__)
