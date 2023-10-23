@@ -239,8 +239,103 @@ setA ^ setB # items in setA but not in setB AND items in setB but not in setA
 mydict = {"key1": value1, "key2", value2}
 ```
 
+## File
+```
+# to open a file
+f = open(file, "mode") # default mode is r
+```
+```file.name```: return the file name<br>
+```file.closed```: return True if file is closed<br>
+```file.mode```: return the access mode of the file
+
+### Access Mode
+```r```: read only<br>
+```w```: write only<br>
+```a```: append<br>
+Example:
+```
+lines = ["This is my FIRST line.\n", "This is my SECOND line.\n", "This is my THIR D line.\n"]
+f = open("mydata.txt","w") # overwrite the file if the file exists
+f.writelines(lines)
+f.close()
+```
+
+## OOP
+Example:
+```
+class Person:
+
+    population = 0 # static class attritube
+    
+    # do something when the object is initialised
+    def __init__(self, name):
+        """Initialises the data."""
+        self.name = name # object attritube
+        print("(Initializing {})".format(self.name))
+        # When this robot is created, the robot adds to the population
+        Robot.population += 1
+    
+    # define a object method called die
+    def die(self):
+        """I am dying."""
+        print("{} is being destroyed!".format(self.name))
+        Robot.population -= 1
+        if Robot.population == 0:
+            print("{} was the last one.".format(self.name))
+        else:
+            print("There are still {:d} robots working.".format(Robot.population))
+            
+    # define a object method called say_hi
+    def say_hi(self):
+        """ Greeting by the robot """
+        print("Greetings, my name is {}.".format(self.name))
+```
+### Variables
+```public```: default variable type, exposed anywhere
+```_internalVariable```: declared as a internal variable, but it can still be access outside
+```__privateVariable```: cannot be access out of the class
+
+To access the private variable, one way is to declare getter and setter method. (Recommended)
+
+The other way is ```object._class__privateVariable```. However, Name mangling is used to ensure that subclasses don't accidentally override
+the private methods and attributes of their superclasses. It's not designed to prevent deliberate access from outside.
+
+Example:
+```
+class Person:
+    def __init__(self, age):
+        self.__age = age
+        
+        
+p = Person(30)
+print(p._Person__age) # access the private variable
+```
+
+### Type of Methods
+#### Object Methods
+Object method is related to the specific object, **it has access to instance or class attributes**
+```
+def object_method():
+    pass
+```
+#### Class Methods
+Class method is related to the specific class, **it has access to class attributes but not any instance attributes**
+```
+@classmethod
+def class_method():
+    pass
+```
+#### Static Methods
+Static method is related to a class, but **it does not have access to any instance or class attributes**
+```
+@staticmethod
+def static_method():
+    pass
+```
+
 ## To Do
 Dynamic Typed vs Statically Typed
+access mode
 binary search
 mergesort
 insertionsort
