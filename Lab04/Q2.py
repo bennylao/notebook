@@ -3,17 +3,12 @@ class Robot1:
         self.batteryCharge = 5.0
 
     def move(self, distance):
-        count = 1
-        while count <= distance:
-            if self.batteryCharge == 0:
+        for i in range(1, distance + 1):
+            self.batteryCharge -= 0.5
+            print(f"[{i}]", end=" ")
+            if self.batteryCharge < 0.5:
                 print("Out of power!")
                 break
-            print(f"[{count}]")
-            self.batteryCharge -= 0.5
-            count += 1
-        else:
-            if self.batteryCharge == 0:
-                print("Out of power!")
 
     def batteryReCharge(self, charge):
         self.batteryCharge += charge

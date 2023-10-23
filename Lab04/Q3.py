@@ -4,7 +4,7 @@ from Lab04.Q2 import Robot1
 
 
 class Robot2(Robot1):
-    def __init__(self, ):
+    def __init__(self):
         super().__init__()
         self.sayings = ["default1", "default2", "default3"]
 
@@ -13,3 +13,8 @@ class Robot2(Robot1):
 
     def speak(self):
         print(random.choice(self.sayings))
+
+
+if __name__ == "__main__":
+    r = Robot2()
+    r.speak()
