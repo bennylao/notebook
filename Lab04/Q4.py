@@ -25,7 +25,7 @@ class CreditCard:
     #     return " ".join(cc_list)
 
     def is_valid(self):
-        return datetime.date(self.__expiry_year + 4, self.__expiry_month + 1, 1) >= datetime.date.today()
+        return datetime.date(self.__expiry_year, self.__expiry_month, 0) >= datetime.date.today()
 
     def __str__(self):
         return (f"Number: {self.format_cc_number()}  Expiry date: {self.format_expiry_date()}  "

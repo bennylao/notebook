@@ -9,12 +9,8 @@ class DNAStrand:
             return False
 
     def complement_wc(self):
-        temp = self.dna.replace("A", "=")
-        temp = temp.replace("T", "A")
-        temp = temp.replace("=", "T")
-        temp = temp.replace("C", "=")
-        temp = temp.replace("G", "C")
-        temp = temp.replace("=", "G")
+        temp = self.dna.replace("A", "=").replace("T", "A").replace("=", "T")
+        temp = temp.replace("C", "=").replace("G", "C").replace("=", "G")
         return temp
 
     def palindrome_wc(self):
