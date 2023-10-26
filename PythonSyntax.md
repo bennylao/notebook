@@ -1,4 +1,4 @@
-# UCL_CS
+# Python Syntax
 
 ## Python Conventions
 
