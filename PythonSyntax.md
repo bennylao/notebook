@@ -3,27 +3,27 @@
 ## Python Conventions
 
 ### Naming Variable
-
 Variable must begin with a letter or underscore. For example, this is not a valid name
-```
+```python
 56_var
 ```
 Any common unicode character can be used for naming as well.
 
 
 Python reserved word list cannot be used for naming. To print all the python reserved word list:
-```
+```python
 import keyword
+
 print(keyboard.kwlist)
 ```
 A better way to list all the keywords
-```
+```python
 import keyword
 help('keywords')
 ```
 
 ### Comments
-```
+```python
 # Inline comments
 
 """
@@ -44,12 +44,12 @@ Block of comments
 
 
 ### String
-```
+```python
 print("text")
 print('text')
 ```
 If we want to print out the quote symbols:
-```
+```{Python}
 # Use of different types of quotes
 print("This is a 'example' string.")
 print('This is a "example" string.')
@@ -69,7 +69,7 @@ print("This is a \"example\" string.")
 
 #### String Operators
 ```+``` Concatenates strA and strB
-```
+```python
 strA = "Hello"
 strB = "World"
 
@@ -77,7 +77,7 @@ strB = "World"
 print(strA + strB)
 ```
 ```*``` Duplicates the string n times
-```
+```python
 str = "Hello"
 
 # it prints "HelloHelloHello"
@@ -88,12 +88,12 @@ print(str * 3)
 ```in``` Return ```boolean``` whether the string contains a substring<br>
 ```not in``` Return ```boolean``` whether the string not contains a substring<br>
 ```r``` Prevent escape character from being rendered
-```
+```python
 # it prints \n
 print(r"\n")
 ```
 ```%``` Format Operator<br>
-```
+```python
 days = 7
 
 # it prints "A week has 7 days"
@@ -101,7 +101,7 @@ print("A week has %d days", %days)
 ```
 
 #### String Functions
-```
+```python
 my_string = "This is a sample string."
 my_string.index("sample", 5, 20) # substring, start_pos, end_pos
 my_string.index("apple") # Valueerror
@@ -120,7 +120,7 @@ my_string.index("apple") # Valueerror
 
 ### Bitwise Operator
 ```&``` Binary AND<br>
-```
+```python
 x = 0b10100
 y = 0b01011
 
@@ -148,7 +148,7 @@ Table===
 ### Associativity of Operator of the same priority
 if operator has the same priority, it usually evaluated from *LEFT to RIGHT*.
 However, for exponent operator ```**```, it is evaluated from *RIGHT to LEFT*.
-```
+```python
 # LEFT-RIGHT associativity
 print(5 + 6 - 7) # output is 4
 
@@ -164,17 +164,17 @@ print(2 ** 3 ** 2) # output is 512
 ```if```, ```elif```, ```else```.
 
 Shorthand if
-```
+```python
 if (x == y): print("x and y are equal")
 ```
 Shorthand if-else
-```
+```python
 print("true") if x > y else print("false")
 ```
 
 ### For and While
 
-```
+```python
 # for-else loop
 for condition:
     do something
@@ -191,7 +191,7 @@ else:
 ### List
 
 ```mylist.sort()```: sort a list. However, it returns nothing.
-```
+```python
 mylist.sort(); # sort the list
 
 new_list = mylist.sort() # new_list is none because sort() return nothing
@@ -199,7 +199,7 @@ new_list = mylist.sort() # new_list is none because sort() return nothing
 
 ### Tuple
 
-```
+```python
 # create empty tuple
 tup1 = ()
 
@@ -213,7 +213,7 @@ print(type(int_tup)) # type is int
 
 ### Set
 set is an unordered collection with no duplicate elements and set is immutable.
-```
+```python
 myset = {1, 2, 3}
 
 new_set = set(["a", "b, "c", "b"])
@@ -221,7 +221,7 @@ print(new_Set) # it prints {a, b, c} or {c, a, b} or other combinations.
 ```
 
 #### Set Operator
-```
+```python
 setA = {1, 2, 3, 4}
 setB = {2, 4, 6, 8}
 
@@ -235,12 +235,12 @@ setA ^ setB # items in setA but not in setB AND items in setB but not in setA
 
 ### Dictionary
 
-```
+```python
 mydict = {"key1": value1, "key2", value2}
 ```
 
 ## File
-```
+```python
 # to open a file
 f = open(file, "mode") # default mode is r
 ```
@@ -253,7 +253,7 @@ f = open(file, "mode") # default mode is r
 ```w```: write only<br>
 ```a```: append<br>
 Example:
-```
+```python
 lines = ["This is my FIRST line.\n", "This is my SECOND line.\n", "This is my THIR D line.\n"]
 f = open("mydata.txt","w") # overwrite the file if the file exists
 f.writelines(lines)
@@ -262,7 +262,7 @@ f.close()
 
 ## OOP
 Example:
-```
+```python
 class Person:
 
     population = 0 # static class attritube
@@ -301,7 +301,7 @@ The other way is ```object._class__privateVariable```. However, Name mangling is
 the private methods and attributes of their superclasses. It's not designed to prevent deliberate access from outside.
 
 Example:
-```
+```Python
 class Person:
     def __init__(self, age):
         self.__age = age
@@ -314,20 +314,20 @@ print(p._Person__age) # access the private variable
 ### Type of Methods
 #### Object Methods
 Object method is related to the specific object, **it has access to instance or class attributes**
-```
+```python
 def object_method():
     pass
 ```
 #### Class Methods
 Class method is related to the specific class, **it has access to class attributes but not any instance attributes**
-```
+```python
 @classmethod
 def class_method():
     pass
 ```
 #### Static Methods
 Static method is related to a class, but **it does not have access to any instance or class attributes**
-```
+```python
 @staticmethod
 def static_method():
     pass
