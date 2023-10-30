@@ -1,1 +1,4 @@
-print(chr(9812))
+import logging
+
+logging.critical("error message")
+print("sth after")

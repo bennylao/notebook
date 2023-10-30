@@ -1,0 +1,10 @@
+Exercise
+
+Q1
+SELECT customers.firstname, customers.familyname FROM customers WHERE customers.state = 'Arizona'
+
+Q2
+SELECT SUM(items.unitcost * lineitems.quantity) FROM items, lineitems WHERE items.itemID = lineitems.itemID
+
+Q3
+

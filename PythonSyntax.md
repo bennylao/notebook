@@ -333,6 +333,60 @@ def static_method():
     pass
 ```
 
+## Package and Module
+
+```Python
+---pkg_root
+    --pkg1
+        --module1.py
+        --module2.py
+    --pkg2
+        --module1.py
+        --module.py
+```
+
+### __init__.py
+
+```__init__.py``` is used to mark the directory as a package.
+
+
+## Logging
+The is five levels of logging.
+```python
+import logging
+
+# logging levels low to high
+logging.debug("debug message")
+logging.info("info message")
+logging.warning("warning message")
+logging.error("error message")
+logging.critical("critical message")
+```
+
+```python
+import logging
+
+# the basic level of logging is WARNING
+# to set the level of logging lower or higher, use basicConfig(level = {level})
+logging.basicConfig(level=logging.DEBUG)
+```
+
+```python
+import logging
+
+# set the basic logging level
+# determine where the logs go
+# file open mode
+# format of the log
+logging.basicConfig(level=logging.DEBUG, 
+                    filename = 'output.log', 
+                    filemode ='w', 
+                    format = '%(module)s - %(levelname)s - %(message)s')
+
+# testing
+logging.warning("This is a warning message")
+```
+
 ## To Do
 Dynamic Typed vs Statically Typed
 access mode
