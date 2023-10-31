@@ -5,6 +5,7 @@
 ### Naming Variable
 Variable must begin with a letter or underscore. For example, this is not a valid name
 ```python
+# This is not a valid name
 56_var
 ```
 Any common unicode character can be used for naming as well.
@@ -49,7 +50,7 @@ print("text")
 print('text')
 ```
 If we want to print out the quote symbols:
-```{Python}
+```python
 # Use of different types of quotes
 print("This is a 'example' string.")
 print('This is a "example" string.')
