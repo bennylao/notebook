@@ -1,3 +1,7 @@
+import time
+import timeit
+
+
 def insertion_sort(nums):
     for i in range(1, len(nums)):
         t = i
@@ -47,6 +51,31 @@ def merge(array1, array2):
 
 if __name__ == "__main__":
     unsorted_list = [3, 1, 5, 4, 6, 7, 9, 8, 7]
-    # resultant_list = insertion_sort(unsorted_list)
-    resultant_list = merge_sort(unsorted_list)
-    print(resultant_list)
+
+    t1 = time.perf_counter()
+    resultant_list1 = insertion_sort(unsorted_list)
+    t2 = time.perf_counter()
+    print(t2 - t1)
+    t_timeit = timeit.timeit("insertion_sort(unsorted_list)", setup="from __main__ import insertion_sort, unsorted_list", number=100)
+    print(f"timeit: {t_timeit}")
+
+    t1 = time.perf_counter()
+    resultant_list2 = merge_sort(unsorted_list)
+    t2 = time.perf_counter()
+    print(t2 - t1)
+    t_timeit = timeit.timeit("merge_sort(unsorted_list)", setup="from __main__ import merge_sort, unsorted_list", number=100)
+    print(f"timeit: {t_timeit}")
+
+    t1 = time.perf_counter()
+    resultant_list3 = sorted(unsorted_list)
+    t2 = time.perf_counter()
+    print(t2 - t1)
+    t_timeit = timeit.timeit("sorted(unsorted_list)", setup="from __main__ import unsorted_list", number=100)
+    print(f"timeit: {t_timeit}")
+
+    t1 = time.perf_counter()
+    unsorted_list.sort()
+    t2 = time.perf_counter()
+    print(t2 - t1)
+    t_timeit = timeit.timeit("unsorted_list.sort()", setup="from __main__ import unsorted_list", number=100)
+    print(f"timeit: {t_timeit}")

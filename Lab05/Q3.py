@@ -27,5 +27,5 @@ def target_sum_2(nums, target):
 if __name__ == "__main__":
     target_list = [3, 0, -1, 0, -2, 5]
     target_num = 2
-    # target_sum(target_list, target_num)
-    target_sum_2(target_list, target_num)
+    target_sum(target_list, target_num)
+    # target_sum_2(target_list, target_num)

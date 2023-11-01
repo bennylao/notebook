@@ -41,12 +41,14 @@ def tic_tac_toe():
             i = int(input("# Make your move ! [1-9] : "))
             if square[i - 1] == " " and 1 <= i <= 9:
                 break
+            logging.info("Invalid Input")
             print("Invalid number! Try again!")
 
         square[i - 1] = "O"
         if check_is_win("O", square):
             generate_game(square)
             print("*** Congratulations! You won! ***")
+            logging.info("User won")
             break
         available_position.remove(i)
         j = random.choice(available_position)
@@ -55,6 +57,7 @@ def tic_tac_toe():
         generate_game(square)
         if check_is_win("X", square):
             print("*** You lost! ***")
+            logging.info("User lost")
             break
 
 
