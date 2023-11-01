@@ -1,6 +1,6 @@
 # Bash (Mac) Syntax
 
-list
+list cmd
 ```bash
 ls
 ```
