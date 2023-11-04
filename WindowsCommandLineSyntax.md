@@ -1,7 +1,14 @@
 # Windows Command Line Syntax
 
 ## CMD
-```echo %PATH%``` print all the environment variables stored in path
+print all the environment variables stored in path
+```echo %PATH%``` 
+
+Remove all the packages installed
+```shell
+pip freeze > unins && pip uninstall -y -r unins && del unins
+```
+
 
 ## Python Command
 ```python``` run python
