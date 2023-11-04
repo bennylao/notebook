@@ -6,10 +6,7 @@
 echo %PATH%
 ```
 
-Remove all the packages installed
-```shell
-pip freeze > unins && pip uninstall -y -r unins && del unins
-```
+
 
 
 ## Python Command
@@ -18,3 +15,8 @@ pip freeze > unins && pip uninstall -y -r unins && del unins
 ```python --version``` check python version
 
 ```pip list``` check python packages installed
+
+- Remove all the packages installed
+```shell
+pip freeze > unins && pip uninstall -y -r unins && del unins
+```
