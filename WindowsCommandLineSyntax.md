@@ -1,8 +1,10 @@
 # Windows Command Line Syntax
 
 ## CMD
-print all the environment variables stored in path
-```echo %PATH%``` 
+- To print all the environment variables stored in path
+```shell
+echo %PATH%
+```
 
 Remove all the packages installed
 ```shell
