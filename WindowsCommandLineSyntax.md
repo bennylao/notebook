@@ -20,3 +20,8 @@ echo %PATH%
 ```shell
 pip freeze > unins && pip uninstall -y -r unins && del unins
 ```
+
+PowerShell
+```shell
+pip freeze | ForEach-Object {$_.split('==')[0]}| %{pip uninstall -y $_}
+```
