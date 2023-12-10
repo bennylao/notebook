@@ -293,7 +293,7 @@ class Person:
 ```
 ### Variables
 ```public```: default variable type, exposed anywhere
-```_internalVariable```: declared as a internal variable, but it can still be access outside
+```_internalVariable```: declared as an internal variable, but it can still be access outside
 ```__privateVariable```: cannot be access out of the class
 
 To access the private variable, one way is to declare getter and setter method. (Recommended)
