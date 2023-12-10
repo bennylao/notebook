@@ -1,2 +1,3 @@
-a = 5 // 2
-print(a)
+import random
+
+print(random.randrange(1, 2))

@@ -34,14 +34,28 @@ Block of comments
 
 ## Basic Data Types
 
-```int```: Integer<br>
-```float```: Float<br>
-```complex```: Complex Number<br>
-```bool```: Boolean<br>
-```str```: String<br>
+```int```: Integer <br>
+```float```: Float <br>
+```complex```: Complex Number <br>
+```bool```: Boolean <br>
+```str```: String <br>
 
+```python
+a = 10 # integer
+b = 5.1 # float
 
-```int()```, ```float```, ```str()``` convert data types.
+# complex number
+import cmath
+z = 5+3j
+print(z.real) # real part of complex number
+print(z.imag) # imaginary part of complex number
+print(cmath.sqrt(z)) # use of mathematical function on complex number
+
+c = True # boolean
+d = "string" # string
+```
+
+```int(var)```, ```float(var)```, ```str(var)``` convert data types.
 
 
 ### String
@@ -65,41 +79,74 @@ print("""This is the first line.
 print("This is a \"example\" string.")
 ```
 
-#### Escape Sequences
+#### Escape Characters
 ```\n``` New line
 
 #### String Operators
-```+``` Concatenates strA and strB
-```python
-strA = "Hello"
-strB = "World"
+```+```: Concatenates strA and strB <br>
+```*```: Duplicates the string n times <br>
+```str[i]```: Returns the characters from the index at i <br>
+```str[i:j]```: Returns the characters from the index in the range i to j where j is excluded <br>
+```str_a in str_b```: Returns True if str_a exist in str_b <br>
+```a not in str_b```: Returns True if str_a does not exist in str_b <br>
+```r"\n"```: Prevents escape characters from being rander
+```"{:d}".format(integer)```: The string formatting operator
 
-# it prints "HelloWorld"
-print(strA + strB)
-```
-```*``` Duplicates the string n times
 ```python
-str = "Hello"
+print("I am " + "string")
+print("n" * 10)
 
-# it prints "HelloHelloHello"
-print(str * 3)
-```
-```[]``` Slice, return the character at the index<br>
-```[:]``` Range Slice, return characters between the given index<br>
-```in``` Return ```boolean``` whether the string contains a substring<br>
-```not in``` Return ```boolean``` whether the string not contains a substring<br>
-```r``` Prevent escape character from being rendered
-```python
-# it prints \n
-print(r"\n")
-```
-```%``` Format Operator<br>
-```python
-days = 7
+str_a = "apple"
+str_b = "apple bannana"
 
-# it prints "A week has 7 days"
-print("A week has %d days", %days) 
+print(str_a[0])
+print(str_a[0:3])
+print(str_a[1:])
+print(str_a[:])
+
+print(str_a in str_b)
+print(str_a not in str_b)
+
+print("First Line\nSecond Line")
+print(r"First Line\n Still First Line")
+
+num = 7
+print("There are %d days in a week" %num)
 ```
+#### String Formatting Operators
+```{:d}```: Integer
+```{:s}```: String
+```{:f}```: Floating point numbers
+```{:.2f}```: Floating point numbers with fixed amount of decimal places
+```{:b}```: Integer in binary (2-bit)
+```{:o}```: Integer in octal (8-bit)
+```{:x}```: Integer in hex (16-bit)
+
+```python
+print("String: {:s}; Integer: {:d}".format("Hello", 100))
+print("r is {!r}, s is {!s}".format("test1", "test2"))
+print("binary: {:b}".format(10))
+print("d: {0:d} {0:x}".format(10))
+print("{:.3f}".format(123.12345))
+print("{!r}".format("10"))
+
+print('{:<30}'.format('left aligned'))
+"""left aligned                  """
+print('{:>30}'.format('right aligned'))
+"""                 right aligned"""
+print('{:^30}'.format('centered'))
+"""           centered           """
+print('{:*^30}'.format('centered'))  # use '*' as a fill char
+"""***********centered***********"""
+```
+
+#### F-Strings
+```f"string {var}"```: easier F-String
+```python
+num = 7
+print(f"There are {num} days in a week")
+```
+
 
 #### String Functions
 ```python
@@ -109,10 +156,15 @@ my_string.index("apple") # Valueerror
 ```
 
 ## Operator
-### Assignment Operators
-```=```
-```+=```
 
+### Arithmetic Operators (Mathematical Operators)
+```+```: addition
+```-```: subtraction
+```*```: multiplication
+```/```: division
+```%```: modulus
+```**```: exponentiation
+```//```: floor division
 
 ### Logical Operator
 ```and```
@@ -120,20 +172,39 @@ my_string.index("apple") # Valueerror
 ```not```
 
 ### Bitwise Operator
-```&``` Binary AND<br>
+```&```: Bitwise AND <br>
+```|```: Bitwise OR <br>
+```^```: Bitwise XOR <br>
+```~```: Bitwise NOT <br>
+```<<```: Bitwise left shift <br>
+```>>```: Bitwise right shift <br>
 ```python
 x = 0b10100
 y = 0b01011
 
-x & y
+print("x & y =", x & y)
 # output is 0
 # x & y -> 00000 -> 0
+
+print("x | y =", x | y)
+# output is 31
+
+print("x ^ y =", x ^ y)
+# output is 31
+# 1 != 0 --> 1
+# 1 == 1 --> 0
+# 0 == 0 --> 0
+
+a = 0b00111
+b = 3
+print(~a)
+print(~b)
+# output is 31
+
+print(a >> 1)
+print(b << 2)
 ```
-```|``` Binary OR<br>
-```~```
-```^```
-```<<```
-```>>```
+
 
 ### Membership Operator
 ```in```
@@ -144,7 +215,7 @@ x & y
 ```is not```
 
 ### Operator Precedence
-Table===
+===Table===
 
 ### Associativity of Operator of the same priority
 if operator has the same priority, it usually evaluated from *LEFT to RIGHT*.
@@ -158,8 +229,8 @@ print(2 ** 3 ** 2) # output is 512
 ```
 
 ## Common Built-in Functions
-```type``` Return the type of variable<br>
-```id``` Return the id of variable<br>
+```type(var)``` Return the type of variable<br>
+```id(var)``` Return the id of variable<br>
 
 ### If
 ```if```, ```elif```, ```else```.

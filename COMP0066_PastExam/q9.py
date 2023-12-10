@@ -16,7 +16,7 @@ def guess_number():
             while True:
                 high_or_low = input("higher or lower?\n")
                 if high_or_low.lower() == "lower":
-                    upper_bound = num - 1
+                    upper_bound = num
                     break
                 elif high_or_low.lower() == "higher":
                     lower_bound = num + 1
@@ -28,5 +28,6 @@ def guess_number():
         count += 1
     print(f"It took me {count+1} try!"
           f"\nThanks for playing!")
+
 
 guess_number()
