@@ -215,8 +215,8 @@ print(b << 2)
 ```is not```
 
 ### Operator Precedence
-
-
+![operator_precedence](docs/assets/operator_precedence.png)
+![operator_precedence](docs%2Fassets%2Foperator_precedence%20.png)
 ### Associativity of Operator of the same priority
 if operator has the same priority, it usually evaluated from *LEFT to RIGHT*.
 However, for exponent operator ```**```, it is evaluated from *RIGHT to LEFT*.
