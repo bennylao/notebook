@@ -215,7 +215,6 @@ print(b << 2)
 ```is not```
 
 ### Operator Precedence
-![image](https://github.com/bennylao/syntax/assets/115106865/82f02505-abb8-4f9f-abaa-7299562eb33e)
 
 
 ### Associativity of Operator of the same priority
