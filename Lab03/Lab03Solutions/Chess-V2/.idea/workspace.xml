@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="63b105e9-b04f-4f60-a0e5-fa2b9a69bbf5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/chessgame.py" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessplayers.py" beforeDir="false" afterPath="$PROJECT_DIR$/chessplayers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo" beforeDir="false" afterPath="$PROJECT_DIR$/todo" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="848533632">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.6" value="2" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="5" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="ReadMe" value="1" />
+          <entry key="py" value="21" />
+          <entry key="todo" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="PLAIN_TEXT" value="3" />
+          <entry key="Python" value="21" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="" value="1" />
+          <entry key="ReadMe" value="415" />
+          <entry key="dummy" value="140" />
+          <entry key="py" value="50184" />
+          <entry key="todo" value="1957" />
+          <entry key="txt" value="597" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PLAIN_TEXT" value="3109" />
+          <entry key="Python" value="50185" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages" />
+    </session>
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Chess-V2" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chess.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-17">
+              <caret line="196" column="21" selection-start-line="196" selection-start-column="21" selection-end-line="196" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+                <marker date="1542182275133" expanded="true" signature="551:585" ph="..." />
+                <marker date="1542182275133" expanded="true" signature="1115:5185" ph="..." />
+                <marker date="1542182275133" expanded="true" signature="1228:1234" ph="..." />
+                <marker date="1542182275133" expanded="true" signature="5775:5823" ph="..." />
+                <marker date="1542182275133" expanded="true" signature="8744:8868" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ReadMe">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chessplayers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="19">
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+                <marker date="1542193693063" expanded="true" signature="171:537" ph="..." />
+                <marker date="1542193693063" expanded="true" signature="859:865" ph="..." />
+                <marker date="1542193693063" expanded="true" signature="6008:14294" ph="..." />
+                <marker date="1542193693063" expanded="true" signature="6422:6428" ph="..." />
+                <marker date="1542193693063" expanded="true" signature="9518:9553" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chessview.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-17">
+              <caret line="133" selection-start-line="133" selection-end-line="133" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+                <marker date="1542134115231" expanded="true" signature="1950:2099" ph="..." />
+                <marker date="1542134115231" expanded="true" signature="3727:4062" ph="..." />
+                <marker date="1542134115231" expanded="true" signature="5331:5332" ph="..." />
+                <marker date="1542134115231" expanded="true" signature="5450:5507" ph="..." />
+                <marker date="1542134115231" expanded="true" signature="5543:5586" ph="..." />
+                <marker date="1542134115231" expanded="true" signature="5624:5683" ph="..." />
+                <marker date="1542134115231" expanded="true" signature="8082:8125" ph="..." />
+                <marker date="1542134115231" expanded="true" signature="8784:11128" ph="..." />
+                <marker date="1542134115231" expanded="true" signature="10702:10931" ph="..." />
+                <marker date="1542134115231" expanded="true" signature="11025:11026" ph="..." />
+                <marker date="1542134115231" expanded="true" signature="11122:11128" ph="..." />
+                <marker date="1542134115231" expanded="true" signature="11164:11699" ph="..." />
+                <marker date="1542134115231" expanded="true" signature="11718:11947" ph="..." />
+                <marker date="1542134115231" expanded="true" signature="12106:12325" ph="..." />
+                <marker date="1542134115231" expanded="true" signature="12509:12515" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/observer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-7">
+              <caret line="40" selection-start-line="40" selection-end-line="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chessgame.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="202">
+              <caret line="28" column="47" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
+                <marker date="1542191973052" expanded="true" signature="3640:3645" ph="..." />
+                <marker date="1542191973052" expanded="true" signature="3692:3698" ph="..." />
+                <marker date="1542191973052" expanded="true" signature="3773:4381" ph="..." />
+                <marker date="1542191973052" expanded="true" signature="6858:6864" ph="..." />
+                <marker date="1542191973052" expanded="true" signature="7318:7324" ph="..." />
+                <marker date="1542191973052" expanded="true" signature="7347:7356" ph="..." />
+                <marker date="1542191973052" expanded="true" signature="7449:7454" ph="..." />
+                <marker date="1542191973052" expanded="true" signature="7718:7724" ph="..." />
+                <marker date="1542191973052" expanded="true" signature="10254:10260" ph="..." />
+                <marker date="1542191973052" expanded="true" signature="10305:10314" ph="..." />
+                <marker date="1542191973052" expanded="true" signature="11328:11392" ph="..." />
+                <marker date="1542191973052" expanded="true" signature="13752:14021" ph="..." />
+                <marker date="1542191973052" expanded="true" signature="14064:14441" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/chesspieces.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="335">
+              <caret line="29" column="14" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+                <marker date="1542116734467" expanded="true" signature="1693:1712" ph="..." />
+                <marker date="1542116734467" expanded="true" signature="2069:2233" ph="..." />
+                <marker date="1542116734467" expanded="true" signature="4036:4042" ph="..." />
+                <marker date="1542116734467" expanded="true" signature="5814:5865" ph="..." />
+                <marker date="1542116734467" expanded="true" signature="9380:9385" ph="..." />
+                <marker date="1542116734467" expanded="true" signature="10122:10173" ph="..." />
+                <marker date="1542116734467" expanded="true" signature="11322:11331" ph="..." />
+                <marker date="1542116734467" expanded="true" signature="13920:13929" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/todo">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="8" column="44" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/board.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-17">
+              <caret line="172" column="28" selection-start-line="172" selection-start-column="8" selection-end-line="172" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+                <marker date="1542116772122" expanded="true" signature="95:96" ph="..." />
+                <marker date="1542116772122" expanded="true" signature="269:414" ph="..." />
+                <marker date="1542116772122" expanded="true" signature="412:414" ph="..." />
+                <marker date="1542116772122" expanded="true" signature="1557:1563" ph="..." />
+                <marker date="1542116772122" expanded="true" signature="1611:1616" ph="..." />
+                <marker date="1542116772122" expanded="true" signature="2574:2733" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/boardgui.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-7">
+              <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+                <marker date="1541771333422" expanded="true" signature="335:474" ph="..." />
+                <marker date="1541771333422" expanded="true" signature="526:532" ph="..." />
+                <marker date="1541771333422" expanded="true" signature="1786:1894" ph="..." />
+                <marker date="1541771333422" expanded="true" signature="3362:3531" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>feedbac</find>
+      <find>You canno</find>
+      <find>empty</find>
+      <find>empty sq</find>
+      <find>.noti</find>
+      <find>.START</find>
+      <find>def _in</find>
+      <find>moveString</find>
+      <find>playerSwitched</find>
+      <find>.notify</find>
+      <find>play</find>
+      <find>.setPla</find>
+      <find>.setPlayerLa</find>
+      <find>.analy</find>
+      <find>._getEnP</find>
+      <find>def isCas</find>
+      <find>piecesStillOnB</find>
+      <find>.setPlayerLabel</find>
+      <find>Inval</find>
+      <find>Wrong PL</find>
+      <find>.s</find>
+      <find>.setP</find>
+      <find>COMPUTER_</find>
+      <find>ChessConstants</find>
+      <find>HUMAN</find>
+      <find>PLAYER_</find>
+      <find>setPlayer1</find>
+      <find>.moveCount</find>
+      <find>Pieces Sc</find>
+      <find>STATUS CHANGE</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/boardgui.py" />
+        <option value="$PROJECT_DIR$/chesspieces.py" />
+        <option value="$PROJECT_DIR$/board.py" />
+        <option value="$PROJECT_DIR$/chessview.py" />
+        <option value="$PROJECT_DIR$/chess.py" />
+        <option value="$PROJECT_DIR$/ReadMe" />
+        <option value="$PROJECT_DIR$/chessgame.py" />
+        <option value="$PROJECT_DIR$/todo" />
+        <option value="$PROJECT_DIR$/chessplayers.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-1784" />
+    <option name="y" value="-100" />
+    <option name="width" value="1558" />
+    <option name="height" value="1057" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Chess-V2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Chess-V2" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.chess">
+    <configuration name="boardgui" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Chess-V2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/boardgui.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="chess" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Chess-V2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chess.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="chessgame" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Chess-V2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/chessgame.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.chess" />
+      <item itemvalue="Python.boardgui" />
+      <item itemvalue="Python.chessgame" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.chess" />
+        <item itemvalue="Python.chessgame" />
+        <item itemvalue="Python.boardgui" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="63b105e9-b04f-4f60-a0e5-fa2b9a69bbf5" name="Default Changelist" comment="" />
+      <created>1541164549445</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1541164549445</updated>
+    </task>
+    <task id="LOCAL-00001" summary="re-jigged MVC to ensure controller driving the game">
+      <created>1541268329871</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1541268329871</updated>
+    </task>
+    <task id="LOCAL-00002" summary="GUI working but not yet perfect!">
+      <created>1541348949959</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1541348949959</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Square highlighting up and running">
+      <created>1541426661993</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1541426661993</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Fully functioning GUI game. Check prior to final testing">
+      <created>1541441595596</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1541441595596</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Proper observer model for board">
+      <created>1541480909904</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1541480909904</updated>
+    </task>
+    <task id="LOCAL-00006" summary="new observer model integrated and initial testing done">
+      <created>1541497832956</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1541497832956</updated>
+    </task>
+    <task id="LOCAL-00007" summary="game play debugged">
+      <created>1541671860447</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1541671860447</updated>
+    </task>
+    <task id="LOCAL-00008" summary="split out pieces and players in to their own modules">
+      <created>1541672574815</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1541672574815</updated>
+    </task>
+    <task id="LOCAL-00009" summary="debug following splitting out in to modules">
+      <created>1541673474020</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1541673474020</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Debug terminal game following Level 1 computer">
+      <created>1541692024456</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1541692024456</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Computer player that looks arbitrarily deep to decide on move">
+      <created>1541775197040</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1541775197040</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Start of debug of Alpha Beta pruning">
+      <created>1542134413323</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1542134413324</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Removed pruning at depth zero&#10;Added ReadMe.txt">
+      <created>1542182497376</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1542182497376</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-1784" y="-100" width="1558" height="1057" extended-state="0" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5222798" side_tool="true" weight="0.16666667" />
+      <window_info id="Structure" order="1" sideWeight="0.4777202" side_tool="true" weight="0.15369393" />
+      <window_info id="Favorites" order="2" side_tool="true" weight="0.3298153" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32771084" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3421687" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3477707" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32366824" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32953367" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.3299363" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="R Graphics" order="3" weight="0.3298153" />
+      <window_info anchor="right" id="R Packages" order="4" weight="0.3298153" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="SHOW_DETAILS" value="true" />
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
+    <MESSAGE value="re-jigged MVC to ensure controller driving the game" />
+    <MESSAGE value="GUI working but not yet perfect!" />
+    <MESSAGE value="Square highlighting up and running" />
+    <MESSAGE value="Fully functioning GUI game. Check prior to final testing" />
+    <MESSAGE value="Proper observer model for board" />
+    <MESSAGE value="new observer model integrated and initial testing done" />
+    <MESSAGE value="game play debugged" />
+    <MESSAGE value="split out pieces and players in to their own modules" />
+    <MESSAGE value="debug following splitting out in to modules" />
+    <MESSAGE value="Debug terminal game following Level 1 computer" />
+    <MESSAGE value="Computer player that looks arbitrarily deep to decide on move" />
+    <MESSAGE value="Start of debug of Alpha Beta pruning" />
+    <MESSAGE value="Removed pruning at depth zero&#10;Added ReadMe.txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed pruning at depth zero&#10;Added ReadMe.txt" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/chess.py</url>
+          <line>108</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/chessview.py</url>
+          <line>176</line>
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="773">
+          <caret line="1663" selection-start-line="1663" selection-end-line="1663" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/tkinter/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="480" selection-start-line="480" selection-end-line="480" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/board.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-17">
+          <caret line="172" column="28" selection-start-line="172" selection-start-column="8" selection-end-line="172" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <marker date="1542116772122" expanded="true" signature="95:96" ph="..." />
+            <marker date="1542116772122" expanded="true" signature="269:414" ph="..." />
+            <marker date="1542116772122" expanded="true" signature="412:414" ph="..." />
+            <marker date="1542116772122" expanded="true" signature="1557:1563" ph="..." />
+            <marker date="1542116772122" expanded="true" signature="1611:1616" ph="..." />
+            <marker date="1542116772122" expanded="true" signature="2574:2733" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/boardgui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <marker date="1541771333422" expanded="true" signature="335:474" ph="..." />
+            <marker date="1541771333422" expanded="true" signature="526:532" ph="..." />
+            <marker date="1541771333422" expanded="true" signature="1786:1894" ph="..." />
+            <marker date="1541771333422" expanded="true" signature="3362:3531" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ReadMe">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/observer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chess.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-17">
+          <caret line="196" column="21" selection-start-line="196" selection-start-column="21" selection-end-line="196" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+            <marker date="1542182275133" expanded="true" signature="551:585" ph="..." />
+            <marker date="1542182275133" expanded="true" signature="1115:5185" ph="..." />
+            <marker date="1542182275133" expanded="true" signature="1228:1234" ph="..." />
+            <marker date="1542182275133" expanded="true" signature="5775:5823" ph="..." />
+            <marker date="1542182275133" expanded="true" signature="8744:8868" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chessview.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-17">
+          <caret line="133" selection-start-line="133" selection-end-line="133" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <marker date="1542134115231" expanded="true" signature="1950:2099" ph="..." />
+            <marker date="1542134115231" expanded="true" signature="3727:4062" ph="..." />
+            <marker date="1542134115231" expanded="true" signature="5331:5332" ph="..." />
+            <marker date="1542134115231" expanded="true" signature="5450:5507" ph="..." />
+            <marker date="1542134115231" expanded="true" signature="5543:5586" ph="..." />
+            <marker date="1542134115231" expanded="true" signature="5624:5683" ph="..." />
+            <marker date="1542134115231" expanded="true" signature="8082:8125" ph="..." />
+            <marker date="1542134115231" expanded="true" signature="8784:11128" ph="..." />
+            <marker date="1542134115231" expanded="true" signature="10702:10931" ph="..." />
+            <marker date="1542134115231" expanded="true" signature="11025:11026" ph="..." />
+            <marker date="1542134115231" expanded="true" signature="11122:11128" ph="..." />
+            <marker date="1542134115231" expanded="true" signature="11164:11699" ph="..." />
+            <marker date="1542134115231" expanded="true" signature="11718:11947" ph="..." />
+            <marker date="1542134115231" expanded="true" signature="12106:12325" ph="..." />
+            <marker date="1542134115231" expanded="true" signature="12509:12515" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chessgame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="28" column="47" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+            <marker date="1542191973052" expanded="true" signature="3640:3645" ph="..." />
+            <marker date="1542191973052" expanded="true" signature="3692:3698" ph="..." />
+            <marker date="1542191973052" expanded="true" signature="3773:4381" ph="..." />
+            <marker date="1542191973052" expanded="true" signature="6858:6864" ph="..." />
+            <marker date="1542191973052" expanded="true" signature="7318:7324" ph="..." />
+            <marker date="1542191973052" expanded="true" signature="7347:7356" ph="..." />
+            <marker date="1542191973052" expanded="true" signature="7449:7454" ph="..." />
+            <marker date="1542191973052" expanded="true" signature="7718:7724" ph="..." />
+            <marker date="1542191973052" expanded="true" signature="10254:10260" ph="..." />
+            <marker date="1542191973052" expanded="true" signature="10305:10314" ph="..." />
+            <marker date="1542191973052" expanded="true" signature="11328:11392" ph="..." />
+            <marker date="1542191973052" expanded="true" signature="13752:14021" ph="..." />
+            <marker date="1542191973052" expanded="true" signature="14064:14441" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/todo">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="8" column="44" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chessplayers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <marker date="1542193693063" expanded="true" signature="171:537" ph="..." />
+            <marker date="1542193693063" expanded="true" signature="859:865" ph="..." />
+            <marker date="1542193693063" expanded="true" signature="6008:14294" ph="..." />
+            <marker date="1542193693063" expanded="true" signature="6422:6428" ph="..." />
+            <marker date="1542193693063" expanded="true" signature="9518:9553" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chesspieces.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="29" column="14" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+            <marker date="1542116734467" expanded="true" signature="1693:1712" ph="..." />
+            <marker date="1542116734467" expanded="true" signature="2069:2233" ph="..." />
+            <marker date="1542116734467" expanded="true" signature="4036:4042" ph="..." />
+            <marker date="1542116734467" expanded="true" signature="5814:5865" ph="..." />
+            <marker date="1542116734467" expanded="true" signature="9380:9385" ph="..." />
+            <marker date="1542116734467" expanded="true" signature="10122:10173" ph="..." />
+            <marker date="1542116734467" expanded="true" signature="11322:11331" ph="..." />
+            <marker date="1542116734467" expanded="true" signature="13920:13929" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

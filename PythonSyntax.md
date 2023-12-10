@@ -114,13 +114,13 @@ num = 7
 print("There are %d days in a week" %num)
 ```
 #### String Formatting Operators
-```{:d}```: Integer
-```{:s}```: String
-```{:f}```: Floating point numbers
-```{:.2f}```: Floating point numbers with fixed amount of decimal places
-```{:b}```: Integer in binary (2-bit)
-```{:o}```: Integer in octal (8-bit)
-```{:x}```: Integer in hex (16-bit)
+```{:d}```: Integer <br>
+```{:s}```: String <br>
+```{:f}```: Floating point numbers <br>
+```{:.2f}```: Floating point numbers with fixed amount of decimal places <br>
+```{:b}```: Integer in binary (2-bit) <br>
+```{:o}```: Integer in octal (8-bit) <br>
+```{:x}```: Integer in hex (16-bit) <br>
 
 ```python
 print("String: {:s}; Integer: {:d}".format("Hello", 100))
@@ -146,7 +146,6 @@ print('{:*^30}'.format('centered'))  # use '*' as a fill char
 num = 7
 print(f"There are {num} days in a week")
 ```
-
 
 #### String Functions
 ```python
@@ -260,13 +259,38 @@ else:
     suite # only execute when the while loop is completed (without break)
 ```
 
+## Data Structures
+
 ### List
 
-```mylist.sort()```: sort a list. However, it returns nothing.
+```len(my_list)```: Returns length of the list <br>
+```my_list.append(item)```: Add item to the end of the list <br>
+```my_list.extend(item1, item2)```: Add multiple items to the end of the list <br>
+```my_list.insert(i, item)```: Insert item into the position at index i <br>
+```my_list.remove(item)```: Remove item from the list <br>
+```my_list.pop(i)```: Remove item from the position at index i, if no index is given, the last item will be removed <br>
+```my_list.index(item)```: Return index of an item in the list <br>
+```my_list.reverse()```: Reverse a list <br>
+```my_list.count()```: Count the number of item in list <br>
+```my_list.sort()```: Sort my_list. Note that it returns NOTHING! <br>
 ```python
 mylist.sort(); # sort the list
 
 new_list = mylist.sort() # new_list is none because sort() return nothing
+
+numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+print(numbers[:4])
+print(numbers[:-4])
+print(numbers[3:])
+print(numbers[::-1])
+print(numbers[::-2])
+# List[start:stop:step]
+"""
+If start and stop are omitted, slicing goes from first to last with a positive step, 
+and last to first with a negative step.
+"""
+print(numbers[1:8:2])
 ```
 
 ### Tuple
@@ -458,6 +482,28 @@ logging.basicConfig(level=logging.DEBUG,
 # testing
 logging.warning("This is a warning message")
 ```
+
+## Other Functions
+```enumerate()```: Create enumerate object of a list
+
+```python
+fruits = ['apple', 'banana', 'cherry']
+enum_fruits = enumerate(fruits)
+
+next_element = next(enum_fruits)
+print(f"Next Element: {next_element}")
+
+fruits = ['apple', 'banana', 'cherry']
+for count, item in enumerate(fruits):
+    print("count: {:d}; fruit is {:s}".format(count, item))
+
+print("Return type:", type(enum_fruits))
+print(list(enumerate(fruits)))
+
+# changing start index to 2 from 0
+print(list(enumerate(fruits, 2)))
+```
+
 
 ## To Do
 Dynamic Typed vs Statically Typed
