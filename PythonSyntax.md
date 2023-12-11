@@ -504,11 +504,68 @@ print(list(enumerate(fruits)))
 print(list(enumerate(fruits, 2)))
 ```
 
+## External Library
+
+### Pandas
+
+
+### Numpy
+```python
+import numimport numpy as np
+
+# create custom matrix
+array_a = np.array(([1, 2, 3], [4, 5, 6], [7, 8, 9]))
+
+# create an array of all zeros
+array_b = np.zeros((2, 2))
+
+# create an array of all ones
+array_c = np.ones((3, 2))
+
+# create an array of all 13
+array_d = np.full((3, 2), 13)
+
+# create 2x2 identity matrix
+array_e = np.eye(2)
+
+# create an array of 9 values, starting from 0 to 2
+array_f = np.linspace(0, 2, 9)
+
+# create a sequence of numbers ranging from 0 to n-1
+array_g = np.arange(7)
+array_h = np.arange(2, 7)
+arragy_i = np.arange(2, 7, 0.5)
+
+# create an array filled with random values
+array_j = np.random.random((2, 3))
+
+# dimension of the array
+print(array_a.ndim)
+
+# shape of an array
+print(array_a.shape)
+```
+
+## Pandas
+```python
+import pandas as pd
+
+series_a = pd.Series([87, 34, 90, 7, 11, 6])
+print(series_a)
+print(series_a.index)
+print(series_a.values)
+
+capitals = ['Nigeria', 'Japan', 'Jordan', 'UK']
+population = [211.4, 125.7, 10.27, 67.33 ]
+series_b = pd.Series(population, index=capitals)
+print(series_b)
+
+my_data = [['Italy',61, 0.83],['Spain',46, 0.63],['Greece',11, 0.15],['France',65, 0.88],['Portugal',10, 0.14]]
+df = pd.DataFrame(my_data, index=['IT', 'ES', 'GR', 'FR', 'PO'], columns=['Country','Popu', 'Percent'])
+print(df)
+```
 
 ## To Do
-Dynamic Typed vs Statically Typed
 access mode
 binary search
-mergesort
-insertionsort
 floyds algorithm
