@@ -8,7 +8,7 @@ def check_input_elements():
         array[i] = input(f"Enter element {i + 1}: ")
     print(array)
     contain_zero = np.all(array)
-    print(f"Test if none of the elements of the said array is zero: {contain_zero}")
+    print("Test if none of the elements of the said array is zero: {!s}".format(contain_zero))
 
 
 if __name__ == "__main__":
