@@ -1,3 +1,3 @@
-# Syntax
+# Programming LanguageNotes
 
-This is a notebook for programming language syntax.
+This is a notebook for some programming languages.

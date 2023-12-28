@@ -1,4 +1,4 @@
-# Windows Command Line Syntax
+# Windows Command Line Notes
 
 ## CMD
 - To print all the environment variables stored in path

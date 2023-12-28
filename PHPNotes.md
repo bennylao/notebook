@@ -1,4 +1,4 @@
-# PHP Syntax
+# PHP Notes
 
 ### Password Hashing
 ```injectablephp

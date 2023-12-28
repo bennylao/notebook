@@ -1,4 +1,4 @@
-# Java Syntax
+# Java Notes
 
 ## String
 In Java, String is *immutable*.

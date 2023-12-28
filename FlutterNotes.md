@@ -1,4 +1,4 @@
-# Flutter Syntax
+# Flutter Notes 
 
 ## StatelessWidget & StatefulWidget
 - A stateless widget never changes. Icon, IconButton, and Text are examples of stateless widgets. 

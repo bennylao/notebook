@@ -1,4 +1,4 @@
-# HTML Syntax
+# HTML Notes 
 
 ## HTML Tags
 
