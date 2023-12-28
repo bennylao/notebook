@@ -3,6 +3,31 @@
 ## String
 In Java, String is *immutable*.
 
+### Formatted Output
+To format output or strings, use ```System.out.printf()``` or ```String.format()``` methods.
+
+```java
+
+// format print
+System.out.printf("My name is %s and I am %d years old.", "Benny", 21);
+
+// format string
+String s = String.format("My name is %s and I am %d years old.", "Benny", 21);
+System.out.println(s);
+
+/*format spcifier*/
+
+// %d - integer
+System.out.printf("\nInteger: %d", 10);
+// %f - float
+System.out.printf("\nFloat: %.2f", 123.4567);
+// %s - string
+System.out.printf("\nString: %s", "Hello");
+// %c - character
+System.out.printf("\nCharacter: %c", 'A');
+```
+
+
 ### StringBuilder
 In order to construct a String, ```StringBuilder``` is used.
 
