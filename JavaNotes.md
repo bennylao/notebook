@@ -6,20 +6,49 @@ In Java, String is *immutable*.
 ### StringBuilder
 In order to construct a String, ```StringBuilder``` is used.
 
+- StringBuilder Constructor
+
 ```java
-public class StringBuilderExample {
-    public static void main(String[] args) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Hello");
-        sb.append(" ");
-        sb.append("world!");
-        System.out.println(sb.toString()); // Output: "Hello world!"
-         
-        sb.insert(6, "beautiful ");
-        System.out.println(sb.toString()); // Output: "Hello beautiful world!"
-         
-        sb.reverse();
-        System.out.println(sb.toString()); // Output: "!dlrow lufituaeb olleH"
-    }
-}
+// create empty stringbuilder
+StringBuilder sb = new StringBuilder();
+
+// create stringbuilder with string "Hello"
+StringBuilder sb = new StringBuilder("Hello");
+```
+
+- StringBuilder Methods
+
+```java
+// create empty stringbuilder
+StringBuilder sb = new StringBuilder();
+
+// length of stringbuilder
+sb.length();
+
+// capacity of stringbuilder
+sb.capacity();
+
+// append string to stringbuilder
+sb.append("Hello");
+
+// reverse the string
+sb.reverse();
+
+// insert string at index i
+sb.insert(i, "Hello");
+
+// replace string
+sb.replace(i, j, "Hello");
+
+// return character at index i
+sb.charAt(i);
+
+// replace character at index i
+sb.setCharAt(i, 'a');
+
+// delete character at index i
+sb.deleteCharAt(i);
+
+// delete from index i to index j
+sb.delete(i, j);
 ```
