@@ -214,7 +214,7 @@ print(b << 2)
 ```is not```
 
 ### Operator Precedence
-![screenshot](docs/assets/operator_precedence.png)
+![operator precedence](docs/assets/operator_precedence.png)
 
 ### Associativity of Operator of the same priority
 if operator has the same priority, it usually evaluated from *LEFT to RIGHT*.
