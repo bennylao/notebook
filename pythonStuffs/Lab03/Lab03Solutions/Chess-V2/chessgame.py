@@ -21,7 +21,7 @@ Note in this version the move selection still has a lot of debugging to do which
 """
 
 class ChessConstants:
-    # Some "Constants" - not really as python doesn't have them. However, don't really want them changing in code
+    # Some "Constants" - not really as pythonStuffs doesn't have them. However, don't really want them changing in code
     WHITE_IN_CHECK          = 'White in check!'
     WHITE_IN_CHECK_MATE     = 'Checkmate !! White loses'
     WHITE_MOVES             = 'White moves'

@@ -4,27 +4,27 @@
 
 ### Naming Variable
 Variable must begin with a letter or underscore. For example, this is not a valid name
-```python
+```pythonStuffs
 # This is not a valid name
 56_var
 ```
 Any common unicode character can be used for naming as well.
 
 
-Python reserved word list cannot be used for naming. To print all the python reserved word list:
-```python
+Python reserved word list cannot be used for naming. To print all the pythonStuffs reserved word list:
+```pythonStuffs
 import keyword
 
 print(keyboard.kwlist)
 ```
 A better way to list all the keywords
-```python
+```pythonStuffs
 import keyword
 help('keywords')
 ```
 
 ### Comments
-```python
+```pythonStuffs
 # Inline comments
 
 """
@@ -40,7 +40,7 @@ Block of comments
 ```bool```: Boolean <br>
 ```str```: String <br>
 
-```python
+```pythonStuffs
 a = 10 # integer
 b = 5.1 # float
 
@@ -59,12 +59,12 @@ d = "string" # string
 
 
 ### String
-```python
+```pythonStuffs
 print("text")
 print('text')
 ```
 If we want to print out the quote symbols:
-```python
+```pythonStuffs
 # Use of different types of quotes
 print("This is a 'example' string.")
 print('This is a "example" string.')
@@ -92,7 +92,7 @@ print("This is a \"example\" string.")
 ```r"\n"```: Prevents escape characters from being rander
 ```"{:d}".format(integer)```: The string formatting operator
 
-```python
+```pythonStuffs
 print("I am " + "string")
 print("n" * 10)
 
@@ -122,7 +122,7 @@ print("There are %d days in a week" %num)
 ```{:o}```: Integer in octal (8-bit) <br>
 ```{:x}```: Integer in hex (16-bit) <br>
 
-```python
+```pythonStuffs
 print("String: {:s}; Integer: {:d}".format("Hello", 100))
 print("r is {!r}, s is {!s}".format("test1", "test2"))
 print("binary: {:b}".format(10))
@@ -142,13 +142,13 @@ print('{:*^30}'.format('centered'))  # use '*' as a fill char
 
 #### F-Strings
 ```f"string {var}"```: easier F-String
-```python
+```pythonStuffs
 num = 7
 print(f"There are {num} days in a week")
 ```
 
 #### String Functions
-```python
+```pythonStuffs
 my_string = "This is a sample string."
 my_string.index("sample", 5, 20) # substring, start_pos, end_pos
 my_string.index("apple") # Valueerror
@@ -177,7 +177,7 @@ my_string.index("apple") # Valueerror
 ```~```: Bitwise NOT <br>
 ```<<```: Bitwise left shift <br>
 ```>>```: Bitwise right shift <br>
-```python
+```pythonStuffs
 x = 0b10100
 y = 0b01011
 
@@ -219,7 +219,7 @@ print(b << 2)
 ### Associativity of Operator of the same priority
 if operator has the same priority, it usually evaluated from *LEFT to RIGHT*.
 However, for exponent operator ```**```, it is evaluated from *RIGHT to LEFT*.
-```python
+```pythonStuffs
 # LEFT-RIGHT associativity
 print(5 + 6 - 7) # output is 4
 
@@ -235,17 +235,17 @@ print(2 ** 3 ** 2) # output is 512
 ```if```, ```elif```, ```else```.
 
 Shorthand if
-```python
+```pythonStuffs
 if (x == y): print("x and y are equal")
 ```
 Shorthand if-else
-```python
+```pythonStuffs
 print("true") if x > y else print("false")
 ```
 
 ### For and While
 
-```python
+```pythonStuffs
 # for-else loop
 for condition:
     do something
@@ -273,7 +273,7 @@ else:
 ```my_list.reverse()```: Reverse a list <br>
 ```my_list.count()```: Count the number of item in list <br>
 ```my_list.sort()```: Sort my_list. Note that it returns NOTHING! <br>
-```python
+```pythonStuffs
 mylist.sort(); # sort the list
 
 new_list = mylist.sort() # new_list is none because sort() return nothing
@@ -295,7 +295,7 @@ print(numbers[1:8:2])
 
 ### Tuple
 
-```python
+```pythonStuffs
 # create empty tuple
 tup1 = ()
 
@@ -309,7 +309,7 @@ print(type(int_tup)) # type is int
 
 ### Set
 set is an unordered collection with no duplicate elements and set is immutable.
-```python
+```pythonStuffs
 myset = {1, 2, 3}
 
 new_set = set(["a", "b, "c", "b"])
@@ -317,7 +317,7 @@ print(new_Set) # it prints {a, b, c} or {c, a, b} or other combinations.
 ```
 
 #### Set Operator
-```python
+```pythonStuffs
 setA = {1, 2, 3, 4}
 setB = {2, 4, 6, 8}
 
@@ -331,12 +331,12 @@ setA ^ setB # items in setA but not in setB AND items in setB but not in setA
 
 ### Dictionary
 
-```python
+```pythonStuffs
 mydict = {"key1": value1, "key2", value2}
 ```
 
 ## File
-```python
+```pythonStuffs
 # to open a file
 f = open(file, "mode") # default mode is r
 ```
@@ -349,7 +349,7 @@ f = open(file, "mode") # default mode is r
 ```w```: write only<br>
 ```a```: append<br>
 Example:
-```python
+```pythonStuffs
 lines = ["This is my FIRST line.\n", "This is my SECOND line.\n", "This is my THIR D line.\n"]
 f = open("mydata.txt","w") # overwrite the file if the file exists
 f.writelines(lines)
@@ -358,7 +358,7 @@ f.close()
 
 ## OOP
 Example:
-```python
+```pythonStuffs
 class Person:
 
     population = 0 # static class attritube
@@ -410,20 +410,20 @@ print(p._Person__age) # access the private variable
 ### Type of Methods
 #### Object Methods
 Object method is related to the specific object, **it has access to instance or class attributes**
-```python
+```pythonStuffs
 def object_method():
     pass
 ```
 #### Class Methods
 Class method is related to the specific class, **it has access to class attributes but not any instance attributes**
-```python
+```pythonStuffs
 @classmethod
 def class_method():
     pass
 ```
 #### Static Methods
 Static method is related to a class, but **it does not have access to any instance or class attributes**
-```python
+```pythonStuffs
 @staticmethod
 def static_method():
     pass
@@ -448,7 +448,7 @@ def static_method():
 
 ## Logging
 The is five levels of logging.
-```python
+```pythonStuffs
 import logging
 
 # logging levels low to high
@@ -459,7 +459,7 @@ logging.error("error message")
 logging.critical("critical message")
 ```
 
-```python
+```pythonStuffs
 import logging
 
 # the basic level of logging is WARNING
@@ -467,7 +467,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 ```
 
-```python
+```pythonStuffs
 import logging
 
 # set the basic logging level
@@ -486,7 +486,7 @@ logging.warning("This is a warning message")
 ## Other Functions
 ```enumerate()```: Create enumerate object of a list
 
-```python
+```pythonStuffs
 fruits = ['apple', 'banana', 'cherry']
 enum_fruits = enumerate(fruits)
 
@@ -510,7 +510,7 @@ print(list(enumerate(fruits, 2)))
 
 
 ### Numpy
-```python
+```pythonStuffs
 import numimport numpy as np
 
 # create custom matrix
@@ -547,7 +547,7 @@ print(array_a.shape)
 ```
 
 ## Pandas
-```python
+```pythonStuffs
 import pandas as pd
 
 series_a = pd.Series([87, 34, 90, 7, 11, 6])

@@ -1,6 +1,6 @@
 import random
 
-from Lab04.Q2 import Robot1
+from pythonStuffs.Lab04.Q2 import Robot1
 
 
 class Robot2(Robot1):

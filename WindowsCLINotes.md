@@ -10,11 +10,11 @@ echo %PATH%
 
 
 ## Python Command
-```python``` run python
+```pythonStuffs``` run pythonStuffs
 
-```python --version``` check python version
+```pythonStuffs --version``` check pythonStuffs version
 
-```pip list``` check python packages installed
+```pip list``` check pythonStuffs packages installed
 
 - Remove all the packages installed
 ```shell

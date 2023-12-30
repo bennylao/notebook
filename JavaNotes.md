@@ -3,6 +3,38 @@
 ## String
 In Java, String is *immutable*.
 
+### String Methods
+
+- String and Array
+```java
+char[] chars = { 'A', 'B', 'C', 'D', 'E', 'F' };
+
+String stringFromChars = String.valueOf(chars); // "ABCDEF"
+
+char[] charsFromString = stringFromChars.toCharArray();
+// { 'A', 'B', 'C', 'D', 'E', 'F' }
+
+String theSameString = new String(charsFromString); // "ABCDEF"
+```
+
+- Splitting the string
+```java
+String sentence = "a long text";
+String[] words = sentence.split(" "); // {"a", "long", "text"}
+
+String text = "Hello";
+String[] parts = text.split(""); // {"H", "e", "l", "l", "o"}
+```
+
+- Sub-String
+```java
+String str = "Hello World!";
+
+System.out.println(str.substring(2)); // llo World!
+System.out.println(str.substring(2, 5)); // llo
+System.out.println(str.substring(0, 5)); // Hello
+```
+
 ### Formatted Output
 To format output or strings, use ```System.out.printf()``` or ```String.format()``` methods.
 
