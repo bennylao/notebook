@@ -191,3 +191,112 @@ public static Long convertStringToLong(String str) {
     return Long.parseLong(str); // It may throw a NumberFormatException
 }
 ```
+
+## enum
+
+### Defining an enum
+
+#### Declaring an enum in a new file
+```java
+public enum Direction {
+    NORTH, SOUTH, EAST, WEST
+}
+```
+
+#### Declaring an enum inside a class
+```java
+enum Direction {
+    NORTH, SOUTH, EAST, WEST
+}
+```
+
+### Methods for processing enums
+
+```java
+Direction north = Direction.NORTH;
+
+System.out.println(north.name()); // "NORTH"
+System.out.println(north.ordinal()); // 0
+
+Direction west = Direction.valueOf("WEST");
+System.out.println(west.name()); // "WEST"
+System.out.println(west.ordinal()); // 3
+
+Direction wrongNorth = Direction.valueOf("north"); // IllegalArgumentException
+
+Direction[] directions = Direction.values();
+```
+
+### Enumerations in a switch statement
+
+```java
+switch (direction) {
+    case NORTH:
+        // do something
+        break;
+    case SOUTH:
+        // do something
+        break;
+    case EAST:
+        // do something
+        break;
+    case WEST:
+        // do something
+        break;
+}
+```
+
+### Iteration with enums
+
+```java
+for (Direction direction : Direction.values()) {
+    System.out.println(direction);
+}
+/*
+NORTH
+SOUTH
+EAST
+WEST
+```
+
+### Fields and Methods in enums
+
+Note that the constructor of an enum must not be public, which avoids the creation of new enum objects 
+by ```new Direction(5, "color")```.
+
+```java
+public enum ChargeLevel {
+    FULL(4, "green"), 
+    HIGH(3, "green"),
+    MEDIUM(2, "yellow"),
+    LOW(1, "red");
+
+    private final int sections;
+    private final String color;
+    
+    // the constructor must not be public
+    // This means we cannot create enum objects by new ChargeLevel(5, "black")
+    ChargeLevel(int sections, String color) {
+        this.sections = sections;
+        this.color = color;
+    }
+    
+    // static methods can also be declared in enums
+    public static ChargeLevel findByNumberOfSections(int sections) {
+        for (ChargeLevel value: values()) {
+            if (value.sections == sections) {
+                return value;
+            }
+        }
+        return null;
+    }
+
+    public int getSections() {
+        return sections;
+    }
+
+    public String getColor() {
+        return color;
+    }
+}
+```
