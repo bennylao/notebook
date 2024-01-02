@@ -1,5 +1,17 @@
 # Java Notes
 
+## Performance
+
+### List vs HashSet
+The set will give much better performance (O(n) vs O(n^2) for the list), 
+and that's normal because set membership (the contains operation) is the very purpose of a set.
+
+Contains for a HashSet is O(1) compared to O(n) for a list, therefore you should never use a list if you often need to run contains.
+```java
+ArrayList<Integer> list = new ArrayList<>();
+HashSet<Integer> set = new HashSet<>();
+```
+
 ## String
 In Java, String is *immutable*.
 
@@ -112,10 +124,14 @@ sb.deleteCharAt(i);
 sb.delete(i, j);
 ```
 
-## Exception Handling
+## Exceptions and Error
+
+### Exception Handling
 
 ```java
-try {
+// try with resources
+// scanner 1 and scanner 2 will be closed automatically after the try block
+try (Scanner scanner1 = new Scanner(file); Scanner scanner2 = new Scanner(file2)) {
     // code that may throw exceptions
 } catch (SQLException | IOException e) {
     // handling SQLException, IOException and their subclasses
@@ -128,8 +144,98 @@ try {
 }
 ```
 
+#### Usage of Try with Resources
+Look at the example:
 
-## Exceptions and Error
+```java
+Reader reader = new FileReader("file.txt");
+// code which may throw an exception
+reader.close();
+```
+Suppose something goes wrong before the close invocation and an exception is thrown. 
+It leads to a situation in which the method will never be called and 
+system resources won't be released. It is possible to solve the problem by using the try-catch-finally construction:
+
+```java
+void readFile() throws IOException {
+  Reader reader = null;
+  try {
+    reader = new FileReader("file.txt");
+    throw new RuntimeException("Exception1");
+  } finally {
+    reader.close(); // throws new RuntimeException("Exception2")
+  }
+}
+```
+
+To ensure the code is robust and all the exceptions are handled, we can update the code in the following way:
+```java
+void readFile() throws IOException {
+    Reader reader = null;
+    try {
+        reader = new FileReader("file.txt");
+        throw new RuntimeException("Exception1");
+    } finally {
+        try {
+            reader.close(); // throws new RuntimeException("Exception2")
+        } catch (Exception e) {
+            // handle the Exception2
+        }
+    }
+}
+```
+
+However, the code can be more verbose and hard to read. Hence, we can use the ```try-with-resources``` construct instead:
+```java
+try (Reader reader1 = new FileReader("file1.txt");
+     Reader reader2 = new FileReader("file2.txt")) {
+    // some code
+}
+// reader1 and reader2 will be closed automatically after try and catch
+```
+
+### Common Exceptions
+
+- NullPointerException
+- NegativeArraySizeException
+- IndexOutOfBoundsException
+  - ArrayIndexOutOfBoundsException
+  - StringIndexOutOfBoundsException
+- NumberFormatException
+- FileNotFoundException
+- IOException
+- InputMismatchException
+- ArithmeticException
+
+```java
+int[] numbers = null;
+int size = numbers.length; // It throws a NullPointerException
+
+int[] numbers = new int[negSize]; // It throws a NegativeArraySizeException
+
+List<Integer> numbers = new ArrayList<>();
+numbers.add(1);
+int number = numbers.get(numbers.size()); // It throws an IndexOutOfBoundsException
+
+int[] array = { 1, 2, 3 }; // an array of ints
+int n2 = array[array.length]; // It throws an ArrayIndexOutOfBoundsException
+
+String str = "Hello";
+char c = str.charAt(str.length()); // It throws a StringIndexOutOfBoundsException
+
+int invalidNumber = Integer.parseInt("abc"); // It throws a NumberFormatException 
+
+Scanner scanner = new Scanner(new File("file.txt")); // It throws a FileNotFoundException
+
+FileReader fileReader = new FileReader("Test.txt");
+System.out.println(fileReader.read()); // It throws an IOException
+fileReader.close(); // It throws an IOException
+
+Scanner scanner = new Scanner(System.in);
+int number = scanner.nextInt(); // It throws an InputMismatchException if user input is string
+
+int result = 10 / 0; // It throws an ArithmeticException
+```
 
 ### Hierarchy of Exceptions
 ![hierarchy of exceptions](docs/assets/hierarchy_of_exceptions.jpg)
@@ -170,7 +276,7 @@ The compiler checks whether the programmer expects the occurrence of such except
 
 ```java
 public static String readLineFromFile() throws FileNotFoundException {
-    Scanner scanner = new Scanner(new File("file.txt")); // throws java.io.FileNotFoundException
+    Scanner scanner = new Scanner(new File("file.txt")); // throws FileNotFoundException
     return scanner.nextLine();
 }
 ```
@@ -191,6 +297,7 @@ public static Long convertStringToLong(String str) {
     return Long.parseLong(str); // It may throw a NumberFormatException
 }
 ```
+
 
 ## enum
 
@@ -299,4 +406,130 @@ public enum ChargeLevel {
         return color;
     }
 }
+```
+
+## Input and Output
+
+To read data from standard input, use ```Scanner```.
+
+```java
+import java.util.Scanner;
+
+Scanner scanner = new Scanner(System.in);
+
+String line = scanner.nextLine() // read a whole line, e.g., "Hello, Kotlin"
+int num = scanner.nextInt()   // read a number, e.g., 123
+long longNum = scanner.nextLong()   // read a number, e.g., 12345678900987654321
+String string = scanner.next()   // read a string, e.g., "Hello"
+
+// to close the scanner
+scanner.close();
+```
+
+### Methods
+
+```java
+import java.util.Scanner;
+
+Scanner scanner = new Scanner(System.in);
+
+// to assert whether the scanner has next data
+while (scanner.hasNext()) {
+    System.out.println(scanner.next());
+}
+```
+
+### Custom Delimiter
+We can input data directly in ```Scanner```.
+```java
+import java.util.Scanner;
+
+Scanner scanner = new Scanner("123_456_789");
+scanner.useDelimiter("_");
+
+println(scanner.nextInt()) // 123
+println(scanner.nextInt()) // 456
+println(scanner.nextInt()) // 789
+
+// to close the scanner
+scanner.close();
+```
+
+## Files
+
+### Relative path and absolute path
+It is generally a good practice to use relative path so that the code is portable.
+
+```java
+File fileOnUnix = new File("./images/picture.jpg");
+File fileOnWin = new File(".\\images\\picture.jpg");
+```
+To access the parent directory, just write ```..``` (double dot).
+So, ```../picture.jpg``` is a file placed in the parent directory of the working directory.
+
+### Reading Files
+To read a file, we use the ```File``` class.
+```java
+import java.io.File;
+import java.util.Scanner;
+import java.io.FileNotFoundException;
+
+File fileOnUnix = new File("/home/username/Documents");    // a directory on a UNIX-like system
+File fileOnWin = new File("D:\\Materials\\java-materials.pdf"); // a file on Windows
+
+try (Scanner scanner = new Scanner(file)) {
+    while (scanner.hasNext()) {
+        System.out.print(scanner.nextLine() + " ");
+    }
+} catch (FileNotFoundException e) {
+    System.out.println("No file found: " + pathToFile);
+}
+```
+
+Also, the scanner will throw ```NoSuchElementException``` if the file does not contain data of the certain type.
+```java
+int nextInt = scanner.nextInt(); // throws NoSuchElementException if there is no next int
+String nextLine = scanner.nextLine(); // throws NoSuchElementException if there is no next line
+```
+
+### Reading Files with newer versions of Java
+
+```java
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+// The following method returns all text from a specified file
+public static String readFileAsString(String fileName) throws IOException {
+  return new String(Files.readAllBytes(Paths.get(fileName)));
+}
+
+// To read source code from a java file
+// the following methods will print out the source code from a java file
+
+public static String readFileAsString(String fileName) throws IOException {
+  return new String(Files.readAllBytes(Paths.get(fileName)));
+}
+
+public static void main(String[] args) {
+  String pathToHelloWorldJava = "./HelloWorld.java";
+  try {
+    System.out.println(readFileAsString(pathToHelloWorldJava));
+  } catch (IOException e) {
+    System.out.println("Cannot read file: " + e.getMessage());
+  }
+}
+```
+
+### File Methods
+
+```java
+File file = new File("/home/username/Documents/javamaterials.pdf");
+
+System.out.println("File name: " + file.getName()); // javamaterials.pdf
+System.out.println("File path: " + file.getPath()); // /home/username/Documents/javamaterials.pdf
+System.out.println("Is file: " + file.isFile()); // true
+System.out.println("Is directory: " + file.isDirectory()); // false
+System.out.println("Exists: " + file.exists()); // true
+System.out.println("Parent path: " + file.getParent()); // /home/username/Documents
 ```
