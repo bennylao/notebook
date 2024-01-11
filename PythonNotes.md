@@ -565,7 +565,43 @@ df = pd.DataFrame(my_data, index=['IT', 'ES', 'GR', 'FR', 'PO'], columns=['Count
 print(df)
 ```
 
-## To Do
-access mode
-binary search
-floyds algorithm
+## Pytorch
+
+### Tensors
+
+- To import dependencies
+```python
+import torch
+import numpy as np
+```
+
+- Initialising a Tensor
+```python
+# initialise new Tensor with list
+data = [[1, 2],[3, 4]]
+x_data = torch.tensor(data)
+
+# initialise Tensor from a Numpy array
+np_array = np.array(data)
+x_np = torch.from_numpy(np_array)
+
+# initialise new Tnesor with exiting tensor
+x_ones = torch.ones_like(x_data) # retains the properties of x_data
+print(f"Ones Tensor: \n {x_ones} \n")
+
+x_rand = torch.rand_like(x_data, dtype=torch.float) # overrides the datatype of x_data
+print(f"Random Tensor: \n {x_rand} \n")
+
+# intialise Tensor with random or constant values
+Random Tensor:
+ tensor([[0.3904, 0.6009, 0.2566],
+        [0.7936, 0.9408, 0.1332]])
+
+Ones Tensor:
+ tensor([[1., 1., 1.],
+        [1., 1., 1.]])
+
+Zeros Tensor:
+ tensor([[0., 0., 0.],
+        [0., 0., 0.]])
+```
