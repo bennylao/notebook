@@ -569,13 +569,15 @@ print(df)
 
 ### Tensors
 
-- To import dependencies
+[Link to Tensor Tutorial](https://pytorch.org/tutorials/beginner/basics/tensorqs_tutorial.html)
+
+#### To import dependencies
 ```python
 import torch
 import numpy as np
 ```
 
-- Initialising a Tensor
+#### Initialising a Tensor
 ```python
 # initialise new Tensor with list
 data = [[1, 2],[3, 4]]
@@ -593,15 +595,41 @@ x_rand = torch.rand_like(x_data, dtype=torch.float) # overrides the datatype of 
 print(f"Random Tensor: \n {x_rand} \n")
 
 # intialise Tensor with random or constant values
-Random Tensor:
- tensor([[0.3904, 0.6009, 0.2566],
-        [0.7936, 0.9408, 0.1332]])
+shape = (2,3,)
+rand_tensor = torch.rand(shape)
+ones_tensor = torch.ones(shape)
+zeros_tensor = torch.zeros(shape)
 
-Ones Tensor:
- tensor([[1., 1., 1.],
-        [1., 1., 1.]])
+print(f"Random Tensor: \n {rand_tensor} \n")
+print(f"Ones Tensor: \n {ones_tensor} \n")
+print(f"Zeros Tensor: \n {zeros_tensor}")
+```
 
-Zeros Tensor:
- tensor([[0., 0., 0.],
-        [0., 0., 0.]])
+#### Attributes of a Tensor
+```python
+tensor = torch.rand(3,4)
+
+print(f"Shape of tensor: {tensor.shape}")
+print(f"Datatype of tensor: {tensor.dtype}")
+print(f"Device tensor is stored on: {tensor.device}")
+```
+
+#### Operations on Tensors
+
+Tensors are created on the CPU but they can also be moved to GPU by
+```python
+# We move our tensor to the GPU if available
+if torch.cuda.is_available():
+    tensor = tensor.to("cuda")
+```
+
+##### Arithmetic Operations
+```
+# This computes the matrix multiplication between two tensors. y1, y2, y3 will have the same value
+# ``tensor.T`` returns the transpose of a tensor
+y1 = tensor @ tensor.T
+y2 = tensor.matmul(tensor.T)
+
+y3 = torch.rand_like(y1)
+torch.matmul(tensor, tensor.T, out=y3)
 ```
