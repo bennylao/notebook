@@ -1,4 +1,4 @@
-# Bash (Mac) Notes 
+# Unix Notes 
 
 ```bash
 ls
@@ -12,6 +12,11 @@ stty -a
 set erase character to backspace
 ```bash
 stty erase '^?'
+```
+
+default erase character
+```bash
+stty erase '^h'
 ```
 
 ## Add Path to Mac
