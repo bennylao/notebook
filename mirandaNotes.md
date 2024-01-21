@@ -282,6 +282,25 @@ mysecond (x, y) = y
 
 ### Pattern Matching
 
+Patterns may consist of constants (for example, integers but not fractional numbers, or the Boolean values True and False), 
+tuples and formal parameter names.
+
+Patterns containing arithmetic, relational or logical expressions are generally not allowed; the following are both wrong:
+
+```miranda
+|| illegae expression
+wrong (x + y) = "silly"
+also_wrong ("a" ++ anystring) = "starts with a"
+```
+
+However, it is legitimate to have patterns of the form (n + k), where n will evaluate
+to a non-negative integer value and k is a non-negative integer constant. Hence the
+following is legitimate, for all actual values of n greater than zero:
+```miranda
+|| speical case that is allowed
+decrement (n + 1) = n
+```
+
 #### Alternative Patterns
 
 All the alternative pattern must be the same type, including input and output type
@@ -290,6 +309,180 @@ All the alternative pattern must be the same type, including input and output ty
 not True = False
 not False = True
 ```
+
+Duplicate
+```miranda
+both equal (x,x) = True
+both equal (x,y) = False
+
+both zero (0,0) = True
+both zero (x,y) = False
+
+step up (0,x) = x
+step up (1,x) = x+1
+
+plus (0,x) = x
+plus (x,0) = x
+plus (x,y) = x+y
+
+twenty four hour (x,"a.m.") = x
+twenty four hour (x,"p.m.") = x + 12
+```
+
+Order of evaluation: On exit from the editor Miranda will report syntax error, as the second case is unreachable.
+```miranda
+wrong or x = True
+wrong or (False,False) = False
+```
+
+#### Guards (if)
+```miranda
+whichsign n = "Positive", if n > 0
+            = "Zero", if n = 0
+            = "Negative", otherwise
+```
+
+#### Alternative and Guarded Patterns
+```miranda
+check equiv ("zero",x) = "Equivalent", if x="Zero"
+                       = "Not equivalent", otherwise
+check equiv ("one",x) = "Equivalent", if x="One"
+                      = "Not equivalent", otherwise
+check equiv (n,x) = "Equivalent", if x=n
+                  = "Out of range of this check", otherwise
+```
+
+### Type Information
+
+#### Polymorphic type constraint
+
+Same type version
+```miranda
+third same :: (*,*,*) -> *
+third same (x,y,z) = z
+
+third same (1,2,3) || 3
+third same (1,2,"3") || type error
+```
+Any type version
+```miranda
+third any :: (*,**,***) -> ***
+third any (x,y,z) = z
+
+third any (1,2,3) || 3
+third any (1,2,"3") || "3"
+```
+
+#### Type Synonyms
+```miranda
+dateformat == (num, [char], num)
+
+sametype_triple * == (*,*,*)
+
+triple * ** *** == (***,**,*)
+```
+Example of type synonym
+```miranda
+revNumTriple :: (sametype_triple num) -> (sametype_triple num)
+revNumTriple (x,y,z) = (z,y,x)
+
+revAnyTriple :: triple * ** *** -> triple *** ** *
+revAnyTriple (x,y,z) = (z,y,x)
+```
+
+### Recursive Functions
+```miranda
+plus :: (num,num) -> num
+plus (x,0) = x
+plus (x,y) = plus (x + 1, y - 1)
+
+printdots :: num -> [char] 
+printdots 0 = ""
+printdots n = "." ++ (printdots (n - 1)), if n >= 1
+            = error "printdots: negative input", otherwise
+```
+
+## List
+
+Formal Definition: 
+A list is either `empty` or `an element of a given type together with a list of elements of the same type`
+
+empty list `[]`
+```miranda
+[] || empty list
+```
+
+### List Operations
+
+```miranda
+num_list = [1, 2, 3, 4, 5]
+```
+
+Extract the first item or the rest of the list
+```miranda
+hd num_list || 1
+tl num_list || [2, 3, 4, 5]
+```
+
+List Construction
+```miranda
+(:) ::
+|| * -> [*] -> [*]
+```
+
+Add an element to list
+```miranda
+list1 = "a" : []
+
+"new" : list1 || ["new", "a"]
+```
+
+Append list to list
+```miranda
+list2 = "abc" : "def" : []
+list3 = "xy" : "z" : []
+
+list2 ++ list3 || ["bc", "xy", "z"]
+```
+
+List Subtraction
+```miranda
+['c', 'b', 'c', 'a', 't', 's'] -- ['c', 's'] || ['b', 'c', 'a', 't']
+
+['c', 'c', 'a', 't', 's'] -- ['c'] || ['c', 'a', 't', 's']
+```
+
+List Length
+```miranda
+# [345, 234, 567] || 3
+```
+
+List Indexing
+```miranda
+["ben", "james", "billy"] ! 2 || "billy"
+```
+
+### Dotdot Notation
+
+This abbreviated form may only be used for ascending lists.
+if a descending list is specified, the system returns the empty list.
+```miranda
+[1..4] || [1, 2, 3, 4]
+
+[4..1] || []
+
+[-2..2] || [-2, -1, 0, 1, 2]
+
+[2..-2] || []
+
+[-2, 0..10] || [-2. 0, 2, 4, 6, 8, 10]
+
+[1, 3..10] || [1, 3, 5, 7, 9]
+
+[3, 1..-5] || [3, 1, -1, -3, -5]
+[3, 1..-8] || [3, 1, -1, -3, -5, -7]
+```
+
 
 ## Error
 
@@ -350,3 +543,8 @@ tw 3 || 6
 abs twice 3 || interpreted as (abs twice) 3, hence type error
 abs (twice 3) || 6
 ```
+
+To-Do
+
+Exercise in Miranda book p62
+convert an integer to a string
