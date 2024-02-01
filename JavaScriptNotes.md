@@ -56,6 +56,18 @@ console.long(innerVar); // innerVar is not defined
 `let` can be updated but not re-declared
 `const` object itself cannot be updated, but its properties can be updated
 
+## Prisma
+
+```bash
+# to validate prisma schema
+npx prisma format
+
+# To generate sql script from Prisma
+npx prisma generate
+
+# To sync the database
+npx prisma migrate dev
+```
 
 ## Examples
 
