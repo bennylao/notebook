@@ -1,0 +1,41 @@
+Paper 2005
+
+Q2
+
+a)
+|| paper 2005 Q2a
+suit ::= Spades | Heart | Clubs | Diamonds
+card == (suit, num)
+
+b)
+
+|| data for testing
+|| shuffle 5 [(Heart, 2), (Spades, 3), (Diamonds, 4), (Clubs, 5), (Heart, 6), (Heart, 7)]
+|| shuffle 2 [(Heart, 1), (Spades, 2), (Diamonds, 3), (Clubs, 4)]
+
+|| paper 2005 Q2b
+shuffle :: num -> [card] -> [card]
+shuffle n [] = []
+shuffle n cardlist
+= error "Number of cards is more than 52", if length > 52
+= xshuffle n cardlist, if length mod 2 = 0
+= xshuffle n (cardlist -- [cardlist ! (length - 1)]), otherwise
+  where
+  xshuffle 0 l = l
+  xshuffle n l = xshuffle (n-1) (process l)
+  process (front : rest) = interleave front (swaphalf (front : rest))
+  interleave prevtop (innerfront : innerrest) = innerfront : prevtop : (innerrest -- [prevtop])
+  swaphalf l = (drop (length div 2) l) ++ (take (length div 2) l)
+  length = # cardlist
+
+c)
+|| paper 2005 Q2c
+f2005 :: num -> num -> num
+f2005 n1 n2
+= xf (n1 * n2)
+  where
+  xf n = n, if n < 10
+       = xf (xxf n), otherwise
+  xxf n = (+(n mod 10)) (xxf (n div 10)), if n >= 10
+        = n, otherwise
+

@@ -1,0 +1,25 @@
+Paper 2007
+
+a)
+
+|| untyped lamabda calculus
+e :: x | lambda x . e | (e e)
+
+without constants:
+e :: lambda x . e | (e e)
+
+b)
+
+exp ::= Var char | Abstraction (Var char) exp | App (exp exp) 
+
+c)
+
+|| define it is curried function
+nsub :: exp -> exp -> exp -> exp
+nsub (Var x) (Var x) (Var b) = Var b                                || x is not bounded and has the same name as first variable, hence replace x by b
+nsub (Var x) (Var y) b = Var x                                      || x is not bounded but it does not have the same name as first variable, hence keep it unchanged
+nsub (Abstraction x e) (Var x) b = Abstraction x e                  || all the occurrences of name "x" must be bounded, hence no change
+nsub (Abstraction x e) (Var y) b = Abstraction x (nsub e (Var y) b) || check if there is any free occurrences of name "y" in e, replace it by b
+nsub (App e1 e2) a b = App (nsub e1 a b) (nsub e2 a b)              ||
+nsub i j k = error "error message..."                               ||
+

@@ -1,0 +1,44 @@
+Paper 2004
+
+Q2
+a)
+It can be defined by a polymorphic recursive algebraic types such that
+mylist * ::= Empty | Element * (mylist *)
+
+b)
+The function seems to return a list of number where the list contains 1, 2 and 0 only.
+The function takes a list as argument, it drops out all the element that is not '1'. 2 and empty list, and returns a list of number.
+However, this function is invalid due to malformed type definition. 
+since the second line takes a char list as argument while the third line takes a num list as argument.
+
+c)
+|| paper 2004 Q2c
+numchar ::= Character char | Number num
+
+d)
+|| paper 2004 Q2d
+numchartree ::= Emptytree | Node numchar (numchartree) (numchartree)
+
+e)
+|| paper 2004 Q2e
+insertnum :: numchartree -> num -> numchartree
+insertnum Emptytree x = Node (Number x) Emptytree Emptytree
+insertnum (Node (Character c) lt rt) x = error "tree can only contain number"
+insertnum (Node (Number n) lt rt) x
+= Node (Number n) (insertnum lt x) rt, if x <= n
+= Node (Number n) lt (insertnum rt x), otherwise
+
+f)
+|| paper 2004 Q2f
+deletenum :: numchartree -> num -> numchartree
+deletenum Emptytree x = Emptytree
+deletenum (Node (Character c) lt rt) n = error "tree can only contain number"
+deletenum (Node (Number n) lt Emptytree) n = lt
+deletenum (Node (Number n) Emptytree rt) n = rt
+deletenum (Node (Number n) lt rt) x
+= Node (Number n) (deletenum lt x) rt, if x < n
+= Node (Number n) lt (deletenum rt x), if x > n
+= Node (Number (rightmost lt)) (deletenum lt (rightmost lt)) rt, otherwise
+  where
+  rightmost (Node (Number n) lt Emptytree) = n
+  rightmost (Node (Number n) lt rt) = rightmost rt
