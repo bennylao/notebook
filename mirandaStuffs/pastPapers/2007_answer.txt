@@ -5,14 +5,13 @@ a)
 || untyped lamabda calculus
 e :: x | lambda x . e | (e e)
 
-without constants:
-e :: lambda x . e | (e e)
-
 b)
 
 exp ::= Var char | Abstraction (Var char) exp | App (exp exp) 
 
 c)
+
+|| for application, the first expression should be an abstraction
 
 || define it is curried function
 nsub :: exp -> exp -> exp -> exp
