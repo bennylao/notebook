@@ -84,15 +84,16 @@ startswith ((x:xs),(y:ys)) = (x=y) & startswith(xs,ys)
 test_tuple (x, y, z) = (z, y, x)
 
 || challenges of counting 1 and 2
+count_one_two :: [num] -> (num, num, num)
+count_one_two = f_count (0, 0, 0, 0)
+
 f_count :: (num, num, num, num) -> [num] -> (num, num, num)
 f_count (a, b, c, d) (x:xs)
   = f_count (a+1, b, c+1, d) xs, if x = 1
   = f_count (a, b+1, 0, max[c, d]) xs, if x = 2
   = (a, b, max[c, d]), if x = 0
 
-|| the main function should be put at the top in miranda
-count_one_two :: [num] -> (num, num, num)
-count_one_two = f_count (0, 0, 0, 0)
+
 
 mylist * ::= Empty | Element * (mylist *)
 
