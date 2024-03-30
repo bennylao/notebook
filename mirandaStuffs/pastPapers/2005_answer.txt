@@ -10,8 +10,8 @@ card == (suit, num)
 b)
 
 || data for testing
-|| shuffle 5 [(Heart, 2), (Spades, 3), (Diamonds, 4), (Clubs, 5), (Heart, 6), (Heart, 7)]
-|| shuffle 2 [(Heart, 1), (Spades, 2), (Diamonds, 3), (Clubs, 4)]
+shuffle 5 [(Heart, 2), (Spades, 3), (Diamonds, 4), (Clubs, 5), (Heart, 6), (Heart, 7)]
+shuffle 2 [(Heart, 1), (Spades, 2), (Diamonds, 3), (Clubs, 4)]
 
 || paper 2005 Q2b
 shuffle :: num -> [card] -> [card]
