@@ -1,4 +1,4 @@
-/* cSpell:disable */
+|| /* cSpell:disable */
 
 || paper 2024
 
@@ -45,22 +45,21 @@ shuffle n cardlist fcd
     || function to shuffle even number of cards
     || if number of shuffle is 0, return the cardlist
     evenshuffle 0 cl = cl
-    || swap and interleave cardlist, and reduce num of shuffle by 1
-    evenshuffle n cl = evenshuffle (n-1) (evenswapinsert (evensplithalf cl))
-    || put the previous top card into the second place
-    || and swap the two half
-    evenswapinsert ((x: xs), (y: ys)) = [y] ++ [x] ++ ys ++ xs
+    || split and interleave cardlist, and reduce num of shuffle by 1
+    evenshuffle n cl = evenshuffle (n-1) (eveninterleave (evensplithalf cl))
+    || interleave the two halfs
+    eveninterleave ((x: xs), (y: ys)) = [y] ++ [x] ++ (eveninterleave (xs, ys))
+    eveninterleave ([], [])           = []
     || split the cards into two half
     evensplithalf cl = (take halflength cl, drop halflength cl)
 
     || function to shuffle odd number of cards
     || if number of shuffle is 0, return the cardlist
     oddshuffle 0 cl = cl
-    || swap and interleave cardlist, and reduce num of shuffle by 1
-    oddshuffle n cl = oddshuffle (n-1) (oddswapinsert (oddsplithalf cl))
-    || put the previous top card into the second place
-    || swap the two half, and put the previous middle card into the end
-    oddswapinsert ((x: xs), (y: ys), z) = [y] ++ [x] ++ ys ++ xs ++ [z]
+    || split and interleave cardlist, and reduce num of shuffle by 1
+    oddshuffle n cl = oddshuffle (n-1) (oddinterleave (oddsplithalf cl))
+    || interleave the two half, and put the previous middle card into the first place
+    oddinterleave (xs, ys, z) = [z] ++ (eveninterleave (xs, ys))
     || split the cards into two half and isolate the middle card
     oddsplithalf cl = (take halflength cl, drop (halflength+1) cl, cl ! halflength)
 
@@ -212,5 +211,5 @@ convertcardtonum cardlist = map (convertnum.convertsuit) cardlist
 || convertcardtonum [(Ace, Hearts), (Ace, Hearts), (Three, Diamonds), (Four, Clubs)]
 
 || shuffle 5 [(Two, Hearts), (Three, Spades), (Four, Diamonds), (Five, Clubs), (Six, Hearts), (Seven, Hearts)] isduplicate
-|| shuffle 3 [(Ace, Hearts), (Two, Hearts), (Ace, Diamonds), (Four, Clubs), (Three, Hearts)] isduplicate
+|| shuffle 4 [(Ace, Hearts), (Two, Hearts), (Ace, Diamonds), (Four, Clubs), (Three, Hearts)] isduplicate
 || shuffle 2 [(Ace, Hearts), (Ace, Hearts), (Three, Diamonds), (Four, Clubs)] isduplicate
