@@ -390,6 +390,11 @@ revAnyTriple :: triple * ** *** -> triple *** ** *
 revAnyTriple (x,y,z) = (z,y,x)
 ```
 
+#### Algebraic Types
+
+Algebraic types are defined with orders. 
+i.e. colour ::= R | G | B, where R < G < B
+
 ### Recursive Functions
 ```miranda
 plus :: (num,num) -> num
@@ -461,6 +466,30 @@ List Indexing
 ```miranda
 ["ben", "james", "billy"] ! 2 || "billy"
 ```
+
+### List Comprehension
+
+Gererate all permutations of a list
+```miranda
+permutations [] = [[]]
+permutations anylist
+= [ front : rest | front <- anylist;
+rest <- permutations(anylist--[front]) ]
+```
+
+Generate cartesian product
+```miranda
+cartesian_product :: [*] -> [**] -> [(*, **)]
+cartesian_product list_a list_b = [(a, b) | a <- list_a; b <- list_b]
+```
+
+Generate list with conditions
+```miranda
+list_condition :: num -> [num]
+list_condition n = [a | a <- [1..n]; n mod a = 0]
+```
+
+test_triangle n = [(a, b, c) // a, b, c <- [1..n]; a^2 + b^2 = c^2]
 
 ### Dotdot Notation
 

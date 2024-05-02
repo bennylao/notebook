@@ -178,7 +178,7 @@ drawandcompare n
 || carddesk 
 ||  = [(a,b) | a <- [Two,  Three, Four, Five,  Six,  Seven, Eight,
 ||                   Nine, Ten,   Jack, Queen, King, Ace];
-||             n <- [Spades, Hearts, Clubs, Diamonds]]
+||             b <- [Spades, Hearts, Clubs, Diamonds]]
 
 || CDC - you need comments here to introduce the function
 determinebesthand :: [[card]] -> [card]

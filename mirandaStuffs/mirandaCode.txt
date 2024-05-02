@@ -107,3 +107,27 @@ insertnum Emptytree x = Node (Number x) Emptytree Emptytree
 || where flatterntree Nodei
 || first flattern the tree then build up new tree
 
+
+abstype nat
+with
+    makeNat :: num -> nat
+    natEqual :: nat -> nat -> bool
+    natLess :: nat -> nat -> bool
+    || similarly for the other comparison operators
+    natMinus :: nat -> nat -> nat
+    natPlus :: nat -> nat -> nat
+    || similarly for the other arithmetic operators
+    natDisplay :: nat -> num
+
+nat == num
+makeNat x
+= error "makeNat: non-negative integer expected",
+if (x < 0) \/ (~(integer x))
+= x, otherwise
+natDisplay x = x
+natEqual = (=)
+natLess = (<)
+natMinus x y
+= error "natMinus: negative result", if (x - y) < 0
+= x - y, otherwise
+natPlus = (+)
