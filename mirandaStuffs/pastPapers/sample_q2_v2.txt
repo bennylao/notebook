@@ -1,0 +1,243 @@
+Question: Provide Miranda code to implement the following simple game, which shuffles a collection of an arbitrary number of playing cards. Do not write a complex user interface.
+
+Your main function should take as arguments a number, a list of elements and a function that can be applied to two cards to determine if they are equal.
+Each element in the list represents a playing card, where each playing card has a “suit” (there are four possible suits) and a “number” (there are thirteen possible numbers, with the top four being called “Jack”, “Queen”, “King” and “Ace”).
+
+The Miranda code should produce as its output a "shuffled" version of the input list (the second argument). The function should shuffle the list of cards as many times as
+is indicated by the first argument. The action of shuffling should cut the deck in half and then interleave the cards, with the previous top card now being the second card
+in the pack. For example, if a list of four items A, B, C and D is shuffled once the result should be C, A, D, B. If that result is shuffled again the result should be
+D, C, B, A.
+
+If the list contains an odd number of cards, you should detect this case and provide an appropriate solution. You should explain your solution – what it does and why.
+
+Your function should detect the following two errors and provide appropriate error handling:
+(i) where there are more than 52 elements in the input list, and
+(ii) where there is any duplicated card in the input list.
+
+Next provide Miranda code to deal four hands of five cards from a shuffled pack of 52 cards, then to determine whether there is a winning hand and if so which hand would win according to the following rules:
+• The best hand is a “straight flush” where all five cards are in the same suit, and where the five values make a sequence with no gaps. If two or more players have a straight
+flush, the one that wins is the one with the highest top-ranked card (an Ace is the highest ranked card). If two or more players have identically high straight flushes, the
+hands are ranked by suit in descending order: Spades, Hearts, Diamonds, Clubs.
+• Second-best is “four of a kind”: four of the same-valued cards (one from each suit). If two or more players have four of a kind the winner is the one with the highest value.
+• Third-best is a “full house” that contains three cards of one value and two cards (a pair) of another value (e.g. 3 Kings and 2 Jacks). Hands are ranked first by the value
+of the triplet, and then by the value of the pair.
+• Fourth-best is a “flush” that contains five cards all of the same suit. Hands are ranked firstly by the value of the highest card, then of the second card, and so on.
+--------------
+
+suit ::= Spades | Hearts | Diamonds | Clubs
+cardnum ::= Ace | Two | Three | Four | Five | Six | Seven | Eight | Nine | Ten | Jack | 
+            Queen | King
+card == (cardnum, suit)
+
+|| function to check if 2 cards are equal
+cards_equal :: card -> card -> bool
+cards_equal card card = True
+cards_equal card1 card2 = False
+
+|| shuffle_cards takes the following arguments: 1. num_shuffles, 2. cardlist, 
+|| 3. function to check if cards are equal
+shuffle_cards :: num -> [card] -> (card -> card -> bool) -> [card]
+shuffle_cards n cardlist checkeq_function
+  = cardlist, if ((# cardlist) <= 1)  
+    || if <= 1 card, no duplicates possible and shuffling won't change the order of cards
+  = error "more than 52 cards", if ((# cardlist) > 52)
+  = error "duplicated card", if (contains_dups checkeq_function cardlist)
+  = xshuffle n cardlist, otherwise  || at least 2 cards to be shuffled
+    where
+    xshuffle 0 cardlist = cardlist
+    xshuffle n cardlist = xshuffle (n-1) (shuffle_once cardlist)
+
+|| shuffle_once shuffles the list of cards just once, assuming no duplicates
+|| If there is an odd number of cards, say 2n+1, then the first n cards will be the top 
+|| half and the other n+1 cards will be the bottom half.
+|| Then since the first card after shuffling is from the bottom half, the interleaving is 
+|| able to complete using alternate cards from the 2 halves without leaving excess cards.
+|| If there is an odd number of cards, the base case for that situation prevents the last card 
+|| from never leaving the bottom of the deck.
+shuffle_once :: [card] -> [card]
+shuffle_once cardlist = 
+  interleave top_half bottom_half
+  where 
+  m = (# cardlist) div 2
+  top_half = take m cardlist
+  bottom_half = drop m cardlist
+  ||top_half_removed = drop m cardlist
+  ||bottom_half = top_half_removed, if ((# cardlist) mod 2 = 0)
+  ||              (last top_half_removed) : (init top_half_removed), otherwise
+
+  interleave [] [] = []  || base case for even number of cards
+  ||interleave [] (c : []) = [c]   || base case for odd number of cards
+  interleave (x : []) (y1 : (y2 : [])) = [y2, x, y1]   || base case for odd number of cards
+  interleave (x : xs) (y : ys) = y : (x : (interleave xs ys))
+
+
+|| function to check if a list of cards contains duplicates - called by shuffle_cards
+|| first input is the function to check if 2 cards are equal
+contains_dups :: (card -> card -> bool) -> [card] -> bool
+contains_dups checkeq_function [] = False
+contains_dups checkeq_function (front : rest) 
+  = (cardmember rest front) \/ (contains_dups checkeq_function rest)
+  where
+  || function to check if a given card appears in a list
+  cardmember [] anycard = False
+  cardmember (front : rest) anycard 
+    = (checkeq_function front anycard) \/ (cardmember rest anycard)
+
+
+|| For testing
+main = shuffle_cards 2 
+       [(Ace, Spades), (Two, Spades), (Three, Spades), (Four, Spades), (Five, Spades)] 
+       cards_equal
+|| A, B, C, D, E -> E, A, C, B, D -> D, E, C, A, B
+|| --------------
+
+
+|| use functions to generate a numerical value for each card so they can be compared
+|| e.g. cardvalue (Queen, Hearts) = 122
+suitvalue :: suit -> num
+suitvalue Spades = 3
+suitvalue Hearts = 2
+suitvalue Diamonds = 1
+suitvalue Clubs = 0
+
+cardnumvalue :: cardnum -> num
+cardnumvalue Two = 2
+cardnumvalue Three = 3
+cardnumvalue Four = 4
+cardnumvalue Five = 5
+cardnumvalue Six = 6
+cardnumvalue Seven = 7
+cardnumvalue Eight = 8
+cardnumvalue Nine = 9
+cardnumvalue Ten = 10
+cardnumvalue Jack = 11
+cardnumvalue Queen = 12
+cardnumvalue King = 13
+cardnumvalue Ace = 14
+
+cardvalue :: card -> num
+cardvalue (somecardnum, somesuit) 
+  = (cardnumvalue somecardnum) * 10 + (suitvalue somesuit)
+
+
+|| function to deal 5 cards to 4 players from deck of cards:
+|| output is of the form [[card1, card2, ...], [card1, card2, ...], ...]
+deal :: [card] -> [[card]]
+deal cardlist 
+  = xdeal cardlist 5 [[],[],[],[]]
+    where
+    xdeal cardlist 0 cards_dealt = cards_dealt
+    xdeal cardlist n cards_dealt 
+      = xdeal (drop 4 cardlist) (n-1) (deal_round cardlist cards_dealt)
+	|| deal_round deals one card to each player and adds the result to cards_dealt
+    deal_round (card1 : (card2 : (card3 : (card4 : rest)))) [p1, p2, p3, p4] 
+      = [(card1 : p1), (card2 : p2), (card3 : p3), (card4 : p4)]
+
+
+|| The following functions check a list of 5 cards for a winning combination, 
+|| assuming all cards have been mapped to their values and sorted.
+|| Some of them call the function all_equal, also defined below.
+|| e.g. [103, 113, 123, 133, 143] is the highest possible straight flush 
+|| and straight_flush [103, 113, 123, 133, 143] returns (True, 143)
+
+|| returns (True, <value of highest card>) if hand contains a straight flush 
+|| and (False, 0) otherwise
+straight_flush :: [num] -> (bool, num)
+straight_flush cardvallist 
+  = (val1 : []) = (True, val1)  || reached the end without returning False
+straight_flush (val1 : (val2 : rest)) 
+  = straight_flush (val2 : rest), if ((val2 - val1) = 10)
+  = (False, 0), otherwise
+
+|| returns (True, <cardnumvalue of the 4 cards>) if hand contains four of a kind 
+|| and (False, 0) otherwise
+four_same :: [num] -> (bool, num)
+four_same cardvallist 
+  = (True, (hd cardvalsonly)), if (all_equal (take 4 cardvalsonly))  
+    || first 4 cards are the same
+  = (True, (last cardvalsonly)), if (all_equal (drop 1 cardvalsonly))  
+    || last 4 cards are the same
+  = (False, 0), otherwise
+    where
+    cardvalsonly = map (div 10) cardvallist
+
+|| returns (True, <cardnumvalue of the triple>) if hand contains a full house 
+|| and (False, 0) otherwise
+|| note: we can always break a tie by value of the triple, 
+|| since 2 players can't both have 3 cards of the same value
+full_house :: [num] -> (bool, num)
+full_house cardvallist 
+  = (True, (last cardvalsonly)), 
+    if (all_equal (take 2 cardvalsonly)) & (all_equal (drop 2 cardvalsonly))
+    || value of triple is higher than pair
+  = (True, (hd cardvalsonly)), 
+    if (all_equal (take 3 cardvalsonly)) & (all_equal (drop 3 cardvalsonly))
+    || value of pair is higher than triple
+  = (False, 0), otherwise
+    where
+    cardvalsonly = map (div 10) cardvallist
+
+|| returns (True, flush_value) if hand contains a flush and (False, 0) otherwise
+|| where flush_value combines the values of the 5 cards and their suit, 
+|| e.g. flush_value = 14121008063 means Ace, Queen, Ten, Eight and Six of Spades
+flush :: [num] -> (bool, num)
+flush cardvallist 
+  = (True, flush_value), if (all_equal cardsuitsonly)
+  = (False, 0), otherwise
+    where
+    cardsuitsonly = map (mod 10) cardvallist
+    cardvalsonly = map (div 10) cardvallist
+    flush_value
+      = (cardvalsonly ! 4) * 1000000000 + (cardvalsonly ! 3) * 10000000 + 
+        (cardvalsonly ! 2) * 100000 + (cardvalsonly ! 1) * 1000 + 
+        (cardvalsonly ! 0) * 10 + (cardsuitsonly ! 0)
+
+|| all_equal checks if all numbers in a list are equal (assuming at least 1 item)
+all_equal :: [num] -> bool
+all_equal (val1 : []) = True
+all_equal (val1 : (val2 : rest)) = (val1 = val2) & (all_equal (val2 : rest))
+
+
+|| getrank uses the functions defined above to return a "rank" 
+|| and value for a sorted list of 5 cards.
+|| rank is 4 if hand contains a straight flush, else 3 if it contains four of a kind, etc.;
+|| rank and value are both 0 if there is no winning combination
+getrank :: [num] -> (num, num)
+getrank cardlist 
+  = (4, (snd (straight_flush cardvallist))), if (straight_flush cardvallist) ~= (False, 0)
+  = (3, (snd (four_same cardvallist))), if (four_same cardvallist) ~= (False, 0)
+  = (2, (snd (full_house cardvallist))), if (full_house cardvallist) ~= (False, 0)
+  = (1, (snd (flush cardvallist))), if (flush cardvallist) ~= (False, 0)
+  = (0, 0), otherwise
+
+|| Given the (rank, value) pairs for each hand in a list, 
+|| winning_tuple returns the highest one, finding first those with the highest rank, 
+|| then of those the one with the highest value.
+|| If there was no winning combination, the output is (0, 0).
+winning_tuple :: [(num, num)] -> (num, num)
+winning_tuple ranks 
+  = (filter ((= bestval) . snd) highrank) ! 0
+    where
+    highrank = filter ((= bestrank) . fst) ranks
+    bestrank tuples = listmax (map fst tuples)
+    bestval tuples = listmax (map snd tuples)
+
+|| listmax finds the maximum number in a list (assuming at least 1 item)
+listmax :: [num] -> num
+listmax (val1 : []) = val1
+listmax (val1 : (val2 : rest)) 
+  = listmax (val1 : rest), if val1 > val2
+  = listmax (val2 : rest), otherwise
+
+
+|| Finally, given a list of hands (as in the output of deal), 
+|| one can apply find_winner to it to return the winning hand, 
+|| or an empty list if there isn't one
+find_winner :: [[card]] -> [card]
+find_winner hands 
+  = [], if winner_rank = (0, 0)
+  = winner_list ! 0, otherwise
+    where
+    winner_list = filter ((= winner_rank) . conv_to_ranks) hands
+    winner_rank = winning_tuple (conv_to_ranks hands)
+    conv_to_ranks hands = map (getrank . sort . (map cardvalue)) hands

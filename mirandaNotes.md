@@ -572,8 +572,3 @@ tw 3 || 6
 abs twice 3 || interpreted as (abs twice) 3, hence type error
 abs (twice 3) || 6
 ```
-
-To-Do
-
-Exercise in Miranda book p62
-convert an integer to a string

@@ -47,34 +47,6 @@ printgraph (Node mychar sublist)
     = updatelist rest (updatelist sublist (mychar : seenlist)), otherwise
 
 
-
-
-
-
-
-
-
-
-
-printgraph :: t_graph char -> [char]
-printgraph Emptygraph = "empty"
-printgraph (Node mychar subnodes) = (xprint mychar seenlist) ++ (looplist subnodes (seenlist ++ [mychar]))
-                                    where 
-                                    seenlist = []
-
-xprint :: char -> [char] -> [char]
-xprint mychar seenlist = "Node " ++ [mychar] ++ " seen", if member seenlist mychar
-                       = "Node " ++ [mychar] ++ " [", otherwise
-
-looplist :: [t_graph] -> [char] -> [char]
-looplist [] any = "empty"
-looplist ((Node mychar any): xs) seenlist = (xprint x seenlist) ++ (looplist xs (seenlist ++ [mychar]))
-
-
-
-
-
-
 || Q2
 
 || First part
