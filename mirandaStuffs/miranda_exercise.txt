@@ -1,0 +1,172 @@
+|| Exercise 1
+
+|| Write a function which takes two integer numbers and generates a result using the following rules: 
+|| (i) Multiply the two numbers together; 
+|| (ii) Then add all the digits of the result; 
+|| (iii) If the sum of the digits has itself only one digit then return it as the result of the function, 
+|| otherwise repeat from (ii)
+
+|| v1
+num_func :: num -> num -> num
+num_func num1 num2
+ = xf (num1 * num2)
+   where 
+
+   || xf takes a number as argument,
+   || it sum all its digits
+   || and returns the sum if it is less than 10
+
+   xf mynum
+    = result, if result < 10
+    = xf result, otherwise
+      where 
+      || digitsum take num and num as arguments
+      || the first num is the input number
+      || the second num is variable holds the sum of digit
+      result = digitsum mynum 0
+      
+      digitsum 0 total = total
+      digitsum mynum total
+      = digitsum (mynum div 10) (total + (mynum mod 10))
+
+|| v2
+num_func :: num -> num -> num
+num_func num1 num2
+ = xf (num1 * num2)
+   where 
+   xf mynum = mynum, if mynum < 10
+   xf mynum = xf (sumdigit mynum)
+
+   sumdigit mynum = mynum, if mynum < 10
+   sumdigit mynum = (+ (mynum mod 10)) (sumdigit (mynum div 10)), otherwise
+
+
+|| Exercise 2
+|| 
+|| 2.1
+|| Give a Miranda algebraic type definition for a binary tree called numchartree that 
+|| contains one data value (only) in each node, and where that data value can 
+|| include either a number or a character (but no other type). 
+||
+|| 2.2
+|| Give the Miranda function definition, including its type, for a function called insertnum which 
+|| inserts a number into a numchartree such that the tree contains only numbers and such that 
+|| the numbers in the tree are sorted; i.e. for each node containing value v, 
+|| all the numbers held in its right subtree are greater than or equal to v, 
+|| and all the numbers held in its left subtree are less than v.  There are no duplicates. 
+|| 
+|| 2.3
+|| Modify your definition for insertnum so that when a new number is added to a numchartree 
+|| the tree remains "balanced". A balanced tree is one where, for each node in the tree, 
+|| the numbers of nodes in its two subtrees differ by no more than one  - 
+|| i.e. if the number of nodes in the left subtree is x, 
+|| and the number of nodes in the right subtree is y, then abs (x-y) <= 1
+
+numchar ::= Num num | Char char
+
+numchartree ::= EmptyTree | Node numchar numchartree numchartree
+
+|| insertnum takes a number and a numchartree as arguments
+|| it returns a sorted numchartree with the number inserted
+|| if the new num is less than the current node, search for the left tree
+|| if the new num is greater than the current node, search for the right tree
+|| insert the number when a emptytree is found
+insertnum :: num -> numchartree -> numchartree
+insertnum mynum EmptyTree = Node (Num mynum) EmptyTree EmptyTree
+insertnum mynum (Node (Char nodeValue) lt rt) = error "tree can only contain number"
+insertnum mynum (Node (Num nodeValue) lt rt)
+ = Node (Num nodeValue) (insertnum mynum lt) rt, if mynum < nodeValue
+ = Node (Num nodeValue) lt (insertnum mynum rt), otherwise
+
+|| Testing
+|| insertnum 10 (Node (Num 3) (Node (Num 2) EmptyTree EmptyTree) (Node (Num 7) (Node (Num 5) EmptyTree (Node (Num 6) EmptyTree EmptyTree)) (Node (Num 11) EmptyTree (Node (Num 15) EmptyTree EmptyTree))))
+
+insertnum :: num -> numchartree -> numchartree
+insertnum n EmptyTree = Node (Num n) EmptyTree EmptyTree
+insertnum n (Node any lt rt)
+ = Node any (insertnum n lt) rt, if (countNodes lt 0) < (countNodes rt 0)
+ = Node any lt (insertnum n rt), otherwise
+   where 
+   countNodes EmptyTree total = total
+   countNodes (Node any left right) total
+    = (+ 1) ((+(countNodes left total)) (countNodes right total))
+
+
+|| Exercise 3
+
+|| The game called “Minefield” presents the user with a 10x10 grid of cells that are initially blank. 
+|| Five (5) of these cells contain hidden mines. The user is invited to enter (x,y) coordinates 
+|| (such that both x and y are between 1 and 10 inclusive) for cells that she wishes to visit. 
+|| The user is given one point for every cell that is visited that does not contain a mine. 
+|| As soon as the user visits a cell that contains a mine, or visits a cell that has already been visited, 
+|| the game is over and the program prints the user’s score to the screen.
+|| 
+|| You are given the following type synonym definition for the game board:
+|| 
+|| >board == [[cell]]
+|| Give an algebraic type definition for the type cell. 
+|| 
+|| Give the definition (including its type) of the function init_board which 
+|| takes as its argument a (possibly infinite) list of (x,y) coordinates representing 
+|| the positions of the mines. Your function should generate a value of type board containing 
+|| 95 empty cells and 5 cells containing mines in the appropriate positions.
+|| 
+|| Give the definitions (including types) of the following two functions:
+|| 
+|| — usermove. This function takes two arguments: the board and a single (x,y) coordinate. 
+|| It returns a two-tuple containing (i) a boolean according to whether the user has hit a mine or 
+|| a previously visited cell, and (ii) a new board, 
+|| suitably updated to indicate which cells have been visited.
+|| 
+|| — showboard. this function takes a single argument: the board. 
+|| It returns a list of characters with newlines embedded appropriately 
+|| in order to display the board on the screen. 
+|| Previously-visited cells should be shown as the character ’X’ and 
+|| unvisited cells should be shown as the space character. 
+|| Mines should be shown as spaces (i.e. hidden from the user). 
+|| 
+|| Assuming the existence of a function random which produces a potentially-infinite list of 
+|| random (x,y) coordinates, give the definition for the main function for the above game. 
+|| This function should provide a loop so that before each move the screen is cleared and 
+|| the current state of the board is displayed on the screen. 
+|| The user is then invited to enter a new (x,y) coordinate pair, 
+|| and this is checked with the function usermove. 
+|| Loop again if no mine (or previously visited cell) is hit: 
+|| otherwise, terminate and print out the user’s score. 
+
+
+|| a cell can be New (the cell has not be visited)
+|| or Mine or Visited (the cell has been visited)
+cell ::= New | Mine | Visited
+board == [[cell]]
+
+coord == (num,num)
+
+init_board :: [coord] -> board
+init_board mineCoordList 
+  = error "The list should contain at lest 5 coordinates", 
+    if length < 5
+  = build_board allNewBoard 0 (shuffle mineCoordList length), 
+    otherwise
+    where 
+    length = # mineCoordList
+    halflength = (# mineCoordList) div 2
+    shuffle minelist 0 = minelist
+    shuffle minelist n = shuffle (interleave (take halflength minelist) (drop halflength minelist)) (n-1)
+
+    interleave x [] = x
+    interleave [] y = y
+    interleave (x:xs) (y:ys) = (x: y: (interleave xs ys))
+
+    allNewBoard = [row | a <- [1..10]]
+    row = [New | a <- [1..10]]
+    build_board b n ((x, y) : rest)
+      = b, if n = 5
+      = build_board (addMine x y b) (n+1) rest, otherwise
+
+    addMine x y b
+    = (take (y-1) b) ++ [(addMineToRow x (b!(y-1)))] ++ (drop y b)
+
+    addMineToRow x row
+    = (take (x-1) row) ++ [Mine] ++ (drop x row)
+

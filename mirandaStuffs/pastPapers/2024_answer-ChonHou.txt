@@ -18,10 +18,35 @@ graph = hd glist
 
 printgraph :: t_graph char -> [char]
 printgraph Emptygraph = "empty"
-printgraph any = xprint 
+printgraph (Node mychar []) = "Node " ++ [mychar] ++ " empty"
+printgraph (Node mychar sublist) 
+ = "Node " ++ [mychar] ++ " [ " ++
+   (xprint sublist [mychar]) ++ " ]"
 
-printgraph Node anychar [] = "Node " ++ [anychar] ++ " empty"
-printgraph Node anychar (x:xs) = 
+   where 
+   xprint [Emptygraph] seenlist = "empty"
+   xprint [(Node mychar [])] seenlist = "Node " ++ [mychar] ++ " empty"
+   xprint [(Node mychar sublist)] seenlist = "Node " ++ [mychar] ++ " seen", if member seenlist mychar
+   xprint [(Node mychar sublist)] seenlist 
+   = "Node " ++ [mychar] ++ " [ " ++
+     (xprint sublist (mychar : seenlist)) ++ " ]"
+
+   xprint (Emptygraph: rest) seenlist = "empty, " ++ (xprint rest seenlist)
+   xprint ((Node mychar []) : rest) seenlist 
+   = "Node " ++ [mychar] ++ " empty, " ++ (xprint rest (mychar : seenlist))
+   xprint ((Node mychar sublist) : rest) seenlist 
+   = "Node " ++ [mychar] ++ " seen, " ++ (xprint rest (mychar : seenlist)), if member seenlist mychar
+   = "Node " ++ [mychar] ++ " [ " ++ (xprint sublist (mychar : seenlist)) ++ " ]," ++ 
+     (xprint rest (mychar : (updatelist sublist seenlist))), otherwise
+
+   updatelist [] seenlist = seenlist
+   updatelist (Emptygraph : rest) seenlist = updatelist rest seenlist
+   updatelist ((Node mychar []) : rest) seenlist = updatelist rest (mychar : seenlist)
+   updatelist ((Node mychar sublist) : rest) seenlist
+    = updatelist rest seenlist, if member seenlist mychar
+    = updatelist rest (updatelist sublist (mychar : seenlist)), otherwise
+
+
 
 
 

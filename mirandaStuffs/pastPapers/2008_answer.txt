@@ -1,0 +1,29 @@
+|| 2008
+
+|| Q3a
+
+mymap :: (*->**) -> [*] -> [**]
+mymap f inputlist = foldr ((:).f) [] inputlist
+
+|| Q3b
+
+member_r :: [*] -> * -> bool
+member_r [] any = False 
+member_r mylist item = foldr ((\/).(=item)) False mylist 
+
+
+member_l :: [*] -> * -> bool
+member_l [] any = False
+member_l mylist item = foldl equal False mylist
+                       where
+                       equal acc x =  acc \/ (x=item)
+
+|| Q3c
+
+the function f taken into foldr takes a list item as the first argument and 
+a result type (boolean in this case) as the second argument, 
+while function f in foldl takes the result type then a list item as arguments.
+
+They can be interchanged if the type of list item is the same as the result type. 
+
+Otherwise, the function f taken into foldl and foldr must be different and requires modification. 

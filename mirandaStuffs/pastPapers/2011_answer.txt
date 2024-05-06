@@ -1,0 +1,81 @@
+|| (a) Given the following algebraic type definition for non-negative integers, give the 
+|| type definitions and Miranda code for two functions plus and times – 
+|| the first of which will add two data items of type pos 
+|| and the second of which will multiply two data items of type pos. 
+|| In each case the function should return a value of type pos.
+
+pos ::= Zero | Succ pos
+
+|| plus num1 num2 recursively applies Succ to num1, num2 times
+plus :: pos -> pos -> pos
+plus Zero num2 = num2
+plus num1 Zero = num1
+plus num1 (Succ num2_less1) = plus (Succ num1) num2_less1
+
+|| my own version
+
+plus :: pos -> pos -> pos
+plus Zero num2 = num2
+plus num1 Zero = num1
+plus (Succ pos1) (Succ pos2) = plus pos1 (Succ (Succ pos2))
+
+
+|| times num1 num2 recursively adds num1 to Zero (using plus), num2 times
+times :: pos -> pos -> pos
+times Zero num2 = Zero
+times num1 Zero = Zero
+times num1 num2 
+  = repeated_plus Zero num1 num2
+    where
+    repeated_plus total num1 Zero = total
+    repeated_plus total num1 (Succ num2_less1) 
+      = repeated_plus (plus total num1) num1 num2_less1
+
+---------------
+|| (b) Given the following function definitions which represent the first four positive 
+|| integers as the function names one, two, three, and four, and assuming similar 
+|| definitions for every positive integer, give the type definition and Miranda code for 
+|| a function called plus that will take as arguments two such functions representing 
+|| integers and return as a result a function that represents the sum of the two input 
+|| integers. For example, the application (plus one two) should evaluate to a function that
+|| takes two arguments (f and x) and returns the value (f (f (f x))).
+
+one f x = f x
+two f x = f (f x)
+three f x = f (f (f x))
+four f x = f (f (f (f x)))
+
+|| Want this behaviour:
+|| one f (two f x) = f (two f x) = f (f (f x)) = three f x
+|| (plus num1 num2) f x = num1 f (num2 f x)
+
+|| if the input type of f is *, then the output must also have type * 
+|| since f can be composed multiple times, i.e. f has type (*->*)
+plus :: ((*->*)->*->*) -> ((*->*)->*->*) -> ((*->*)->*->*)
+plus num1 num2 = sum_fn
+		 where
+		 sum_fn f x = num1 f (num2 f x)
+
+---------------
+|| (c) Given the following two functions fnil and fcons, which respectively represent the 
+|| empty list [] and the list constructor (:) as functions, give the Miranda code for 
+|| appropriate functions fhd and ftl which each take a functional representation of a list 
+|| (i.e. either fnil, or fcons applied to two arguments) and return respectively the head 
+|| of the input list or a functional representation of the tail of the input list. 
+|| Do not attempt to provide the types for fhd and ftl.
+|| You may make use of the combinators cancel and swap in your answer.
+
+cancel x y = x
+swap f x y = f y x
+
+fnil x = error “tried to take fhd or ftl of an empty list”
+fcons a b = f
+	    where
+	    f g = g a b
+
+|| If we cons item a onto list b, we get new list f. 
+|| Giving f a function argument g will apply g to the head (a) and tail (b) of f.
+fhd f = f cancel
+ftl f = f (swap cancel)
+|| f cancel = cancel a b = a
+|| f (swap cancel) = swap cancel a b = cancel b a = b
