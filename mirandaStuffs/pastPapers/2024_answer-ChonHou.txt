@@ -2,7 +2,55 @@
 
 || paper 2024
 
-|| paper 2024 Q2 (version 2)
+|| Q1 C
+
+t_graph * ::= Emptygraph | Node * [t_graph *]
+
+glist :: [t_graph char]
+glist = [Node 'A' [glist!2, glist!1],
+         Node 'B' [glist!3],
+         Node 'C' [glist!0, glist!3],
+         Node 'D' []
+        ]
+
+graph :: t_graph char
+graph = hd glist
+
+printgraph :: t_graph char -> [char]
+printgraph Emptygraph = "empty"
+printgraph any = xprint 
+
+printgraph Node anychar [] = "Node " ++ [anychar] ++ " empty"
+printgraph Node anychar (x:xs) = 
+
+
+
+
+
+
+
+
+
+printgraph :: t_graph char -> [char]
+printgraph Emptygraph = "empty"
+printgraph (Node mychar subnodes) = (xprint mychar seenlist) ++ (looplist subnodes (seenlist ++ [mychar]))
+                                    where 
+                                    seenlist = []
+
+xprint :: char -> [char] -> [char]
+xprint mychar seenlist = "Node " ++ [mychar] ++ " seen", if member seenlist mychar
+                       = "Node " ++ [mychar] ++ " [", otherwise
+
+looplist :: [t_graph] -> [char] -> [char]
+looplist [] any = "empty"
+looplist ((Node mychar any): xs) seenlist = (xprint x seenlist) ++ (looplist xs (seenlist ++ [mychar]))
+
+
+
+
+
+
+|| Q2
 
 || First part
 

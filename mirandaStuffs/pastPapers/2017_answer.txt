@@ -1,0 +1,113 @@
+|| Q1 
+
+|| Q1a
+|| Give the Miranda code for an algebraic type called “expr” that 
+|| defines the values for an expression in the untyped lambda calculus without constants.
+
+expr ::= Var [char] | App expr expr | Abst (Var [char]) expr
+
+|| Q1b
+|| Based on your answer to part (a), give the Miranda code for a function called
+|| “substitute” with type “[char] -> [char] -> expr -> expr” whose
+|| output is a modification of the third argument where all free occurrences of
+|| the first argument have been replaced with the second argument. Thus,
+|| (substitute “x” “y” e) will replace all free occurrences of the name “x”
+|| found inside e with the name “y”.
+
+substitute :: [char] -> [char] -> expr -> expr
+substitute x y Var anychar = Var anychar
+substitute x y Var x       = Var y
+substitute x y (App expr1 expr2) = App (substitute x y expr1) (substitute x y expr2)
+substitute x y (Abst (Var x) expr) = Abst (Var x) expr
+substitute x y (Abst (Var any) expr) = (Abst (Var any) (substitute expr))
+
+|| Q1c
+
+Let FV(M) be the set of free variables of lambda term M, 
+if FV(M) = empty set, M is a combinator
+(combinator is a lambda term with no free variable)
+
+|| assume '\' is the lambda symbol
+S x y z = (x z) (y z)
+\x\y\z . ((xz)(yz))
+K x y = x
+\x\y . x
+I x = x
+\x . x
+
+|| Q1d
+I = SKK
+
+I 23 = SKK 23
+     = (K 23)(K 23)
+     = 23
+
+|| Q2a
+it sums all the values in a tree of numbers
+
+|| Q2b
+correct: vi
+skip
+
+|| Q2c
+v
+
+|| Q2d
+
+tree * ::= Leaf * | BinaryNode * (tree *) (tree *) | MultiwayNode * [tree *]
+
+|| v1
+rightmost :: tree * -> *
+rightmost (Leaf any) = any
+rightmost (BinaryNode any lt rt) = rightmost rt
+rightmost (MultiwayNode any []) = any
+rightmost (MultiwayNode any subtrees) = rightmost (last subtrees)
+
+|| v2
+rightmost :: tree * -> *
+rightmost (Leaf any) = any
+rightmost (BinaryNode any lt Leaf rightValue) = rightValue
+rightmost (BinaryNode any lt rt) = rightmost rt
+rightmost (MultiwayNode any []) = any
+rightmost (MultiwayNode any subtrees) = rightmost (last subtrees)
+
+|| or v2.1
+rightmost :: tree * -> *
+rightmost (Leaf any) = any
+rightmost (BinaryNode any lt rt) = rightmost rt
+rightmost (MultiwayNode any []) = any
+rightmost (MultiwayNode any [Leaf rightValue]) = rightValue
+rightmost (MultiwayNode any subtrees) = rightmost (last subtrees)
+
+|| v1 should be more efficient when the tree is deep since it has less pattern to check
+
+|| v2 should be more efficient when the tree is relatively shallow, 
+|| it return result with one less loop.
+
+|| Q3a
+
+iii
+
+|| Q3b
+
+a partial function. if f and x are given on the right hand side, 
+it gives f(f(fx))
+
+one, two, three represent the number of times function f applies on x
+
+"op" should be called "plus"
+
+|| Q3c
+
+g :: [*] -> num
+
+it returns the length of the list
+
+|| Q3d
+
+
+|| Q4a
+
+rcons :: * -> ([*] -> **) -> [*] -> **
+
+rev :: [*] -> **
