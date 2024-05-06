@@ -1,0 +1,50 @@
+Exercise 2
+
+1.    Give a Miranda algebraic type definition for a binary tree called numchartree that contains one data value (only) in each node, and where that data value can include either a number or a character (but no other type). 
+
+numchar ::= Number num | Character char
+numchartree ::= Empty | Node numchar numchartree numchartree
+
+
+2.    Give the Miranda function definition, including its type, for a function called insertnum which inserts a number into a numchartree such that the tree contains only numbers and such that the numbers in the tree are sorted; i.e. for each node containing value v, all the numbers held in its right subtree are greater than or equal to v, and all the numbers held in its left subtree are less than v.  There are no duplicates.
+
+insertnum :: numchartree -> num -> numchartree
+insertnum Empty x = Node (Number x) Empty Empty
+insertnum (Node (Character c) left right) x = error "tree can only contain numbers"
+insertnum (Node (Number v) left right) x 
+  = Node (Number v) (insertnum left x) right, if (x < v)
+  = Node (Number v) left (insertnum right x), otherwise
+
+
+3.    Modify your definition for insertnum so that when a new number is added to a numchartree the tree remains "balanced". A balanced tree is one where, for each node in the tree, the numbers of nodes in its two subtrees differ by no more than one.
+
+|| form a sorted list from the sorted tree, insert the number,
+|| then reconstruct a balanced tree from the sorted list
+insertnumbalanced :: numchartree -> num -> numchartree
+insertnumbalanced anytree x = balancedtree_from_list (insert_to_list x (tree_to_list anytree))
+
+|| given a sorted tree, return a sorted list
+tree_to_list :: numchartree -> [num]
+tree_to_list Emptytree = []
+tree_to_list Node (Number v) left right = (tree_to_list left) ++ [v] ++ (tree_to_list right)
+
+|| insert number into sorted list
+insert_to_list :: num −> [num] −> [num]
+insert_to_list x [] = [x]
+insert_to_list x (front : rest)
+  = (x : (front : rest)), if (x <= front)
+  = front : (insert_to_list x rest), otherwise
+
+|| split sorted list into left list, right list and middle element,
+|| then set middle element as node value and do recursive calls on left and right lists 
+|| to form left and right subtrees
+balancedtree_from_list :: [num] -> numchartree
+balancedtree_from_list [] = Emptytree
+balancedtree_from_list anylist
+  = Node (Number middle) (balancedtree_from_list left_list) (balancedtree_from_list right_list)
+    where 
+    middle = anylist ! ((# anylist) div 2)
+    || if list has odd length, it's the middle element;
+    || if list has even length, it's just to the right of the middle
+    left_list = takewhile (< middle) anylist
+    right_list = dropwhile (<= middle) anylist
