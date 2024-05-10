@@ -1,10 +1,38 @@
-Exercise
-
 Q1
-SELECT customers.firstname, customers.familyname FROM customers WHERE customers.state = 'Arizona'
+SELECT c.firstname, c.familyname FROM customers c WHERE c.state = 'Arizona'
 
 Q2
-SELECT SUM(items.unitcost * lineitems.quantity) FROM items, lineitems WHERE items.itemID = lineitems.itemID
+SELECT SUM(i.unitcost * l.quantity) AS total FROM lineitems l, items i WHERE l.itemID = i.itemID
+
+SELECT SUM(i.unitcost * l.quantity) AS total FROM lineitems l JOIN items i ON l.itemID = i.itemID
 
 Q3
+SELECT COUNT(*) AS bulkbuyers FROM customers c WHERE EXISTS (
+SELECT * 
+FROM lineitems l, orders o
+WHERE c.custID = o.custID AND o.orderID = l.orderID AND l.quantity > 2)
+
+Q4
+SELECT c.state, COUNT(custID) AS stateCustomers FROM customers c GROUP BY c.state 
+ORDER BY stateCustomers DESC
+
+Q5
+
+
+Q6
+SELECT c.state, COUNT(c.custID) AS TotalWhoBoughtUmbrellas FROM customers c 
+WHERE c.custID IN 
+(
+SELECT o.custID 
+FROM lineitems l, items i, orders o
+WHERE i.description = 'Umbrella' 
+AND l.itemID = i.itemID 
+AND o.orderID = l.orderID)
+GROUP BY c.state
+
+Q7
+
+SELECT i.itemID, i.description, l.quantity 
+FROM items i, lineitems l
+WHERE l.quantity = (SELECT MAX(l.quantity) FROM lineitems l) AND l.itemID = i.itemID
 
