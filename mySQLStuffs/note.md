@@ -140,3 +140,97 @@ Retain the determinant (left side) as a foreign key in the original table.
 Example: 
 - 3NF: Teaching (pupil, subject, teacher)
 - BCNF: Tutor (pupil, teacher) and TaughtSubject (teacher, subject)
+
+## Week 3 Database Storage and Relatinal Algebra
+
+### Units of Storage
+- Block: fixed-length unit of storage; 
+smallest unit of data that can be read or allocated. 
+Usually ~4-8 kb.
+- Page: fixed-length unit of data used in memory management
+
+#### Fixed-length Records
+Fixed-length records/fields can simplify storage/storage operations
+- Number of records per block is known in advance. 
+- New records can fill the place of deleted records 
+if order is not important. 
+- bKeep track of empty slots with a "free list". 
+
+#### Variable-length Records
+- Records with variable-length fields can be implemented by 
+storing two pieces of metadata per record: 
+**offset** (location) and **length** (size).
+- Variable-length records can be stored within a block (or page) 
+with a **slotted-page** structure.
+    - Block storage is "eaten" at two different ends and meets in the middle.
+    - Top: header with offset/length metadata on all records in that block.
+    - Bottom: the records stored contiguously.
+
+#### Buffers
+Temporary memory storage for data that is being (1) processed or 
+(2) transferred elsewhere.
+
+In database context, a buffer is anywhere storing (temporary) 
+copies of data outside of the database (for reading or updating purposes). 
+
+- If space is limited, some data (pages) not being (recently) used may be overwritten.
+    - If this space contains updated database data, the updated data should be written to the database (dirty page).
+
+- "**Flushing buffers**" means writing all data contained in buffers 
+to long-term storage.
+    - Clear out all data so that all of temporary storage is available to be used again.
+
+#### Indexes
+a data structure to aid in the quick data retrieval (random access) 
+of specific records in a table
+
+Types of indexes:
+- Clustering/clustered vs. nonclustered (or primary vs. secondary indexes).
+- For clustered indexes: Dense vs. sparse.
+- Single-level vs. multilevel.
+
+Clustered (primary index): 
+the attribute or set of attributes that determine the order that 
+records in a relation are physically stored. (sorted attributes)
+
+Note that records are physically stored by primary index.
+
+Nonclustered (secondary index):
+an additional index defined on a table that differ from the way that 
+the table is stored intrinsically. (non-sorted attributes)
+
+Dense index: every unique value of the index attribute(s) has a 
+direct pointer to itself. 
+
+Sparse index: Not every value of the index attribute(s) has a 
+direct pointer. Records are sorted and the specific record can be found 
+by using the pointers to close values. (only clusted indexes can use 
+Sparse index). 
+
+Multi-level indexes: 
+if an index is too large to be loaded entirely in memory, 
+make another sparse index of the index records. (Forms a tree structure). 
+Keep the root of the tree in memory at all times.
+
+#### B+ Balanced Tree
+One type of balanced tree, the lengths of all paths from root to  
+leaf nodes are all equal. (leaf nodes are all in the same level)
+
+#### Hashing
+A hash function which takes Search key value as input and returns 
+an address in memory.
+
+An ideal hash function for database storage has the following properties:
+- Deterministic behavior (same search key sent in twice MUST 
+yield same output).
+- Yields an answer for all possible search keys.
+- Distributes search keys across the allowed storage space in 
+as uniform a manner as possible.
+- Quick to calculate.
+
+##### Hashing Overflow
+![Hashing_Overflow](../docs/assets/hashing_overflow.png)
+
+#### Clustered vs Hashing
+![ClusteredVsHashing](../docs/assets/clusteredVsHashing.png)
+
