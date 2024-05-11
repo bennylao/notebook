@@ -234,3 +234,9 @@ as uniform a manner as possible.
 #### Clustered vs Hashing
 ![ClusteredVsHashing](../docs/assets/clusteredVsHashing.png)
 
+
+## Week 6 Transaction Management
+
+![DatabaseACID](../docs//assets/database_ACID.png)
+
+![TransactionManagers](../docs/assets/transaction_managers.png)
