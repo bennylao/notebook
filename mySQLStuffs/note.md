@@ -240,3 +240,9 @@ as uniform a manner as possible.
 ![DatabaseACID](../docs//assets/database_ACID.png)
 
 ![TransactionManagers](../docs/assets/transaction_managers.png)
+
+## Week 10 NoSQL
+
+![NoSQL_vs_Relational](../docs/assets/noSQLvsRelational.png)
+
+![BASE_properties](../docs/assets/baseProperties.png)
