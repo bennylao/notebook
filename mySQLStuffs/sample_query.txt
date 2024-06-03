@@ -1,0 +1,14 @@
+%%bigquery --project $PROJECT
+
+SELECT
+    ARRAY_REVERSE(SPLIT(REGEXP_EXTRACT(url, '.*://(.[^/]+)/'), '.'))[safe_offset (1)] AS source,
+    COUNT(*) AS num_articles
+FROM
+    `bigquery-public-data.hacker_news.full`
+WHERE
+    REGEXP_CONTAINS(REGEXP_EXTRACT(url, '.*://(.[^/]+)/'), '.com$')
+    AND LENGTH(title) > 10
+GROUP BY
+    source
+ORDER BY num_articles DESC
+  LIMIT 100
