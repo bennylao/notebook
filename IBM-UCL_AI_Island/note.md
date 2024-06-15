@@ -21,6 +21,7 @@ Provision this as an extension for WatsonX under the IBM-UCL AI-Islands name.
     - https://eu-gb.dataplatform.cloud.ibm.com/wx/home?context=wx&apps=data_science_experience,watson_machine_learning,cos&nocache=true&onboarding=true&quick_start_target=watsonx
 - watson service: https://cloud.ibm.com/developer/watson/dashboard
 - SkillsBuild: https://academic.ibm.com/a2mt/downloads
+- .NET MAUI: https://learn.microsoft.com/en-gb/dotnet/maui/what-is-maui?view=net-maui-8.0
 
 ## Random Note
 - problem statement
@@ -32,3 +33,17 @@ Provision this as an extension for WatsonX under the IBM-UCL AI-Islands name.
 
 - presentations
 - road map, figma, proejct goal, conceptual design, plan, ...
+
+## Meeting Note
+
+tutorial
+
+playground
+
+download small model, fine tune locally, 
+
+## To-do
+
+- Auto fetching LLM models
+- .NET MAUI
+- Integration between Python and .NET
