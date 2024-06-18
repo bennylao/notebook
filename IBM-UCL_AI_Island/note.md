@@ -34,16 +34,29 @@ Provision this as an extension for WatsonX under the IBM-UCL AI-Islands name.
 - presentations
 - road map, figma, proejct goal, conceptual design, plan, ...
 
-## Meeting Note
-
-tutorial
-
-playground
-
-download small model, fine tune locally, 
+- small model extract the important info from the doc and then offload it into watsonx
 
 ## To-do
 
 - Auto fetching LLM models
 - .NET MAUI
 - Integration between Python and .NET
+
+## meeting notes
+
+- we have to use c# to code the logic behind the app, we have to design the classes and models, like what we did in the python module
+- MVVM (model, view, view model)
+- .NET support ML thorough ML.net, but it seems like it cannot integrate library like hugging face. we may want to run a local server with fastAPI and we call the api only when we need it
+
+## Weekly Notes
+
+### Week 1
+Understand project brief
+
+### Week 2
+- tech review
+    - Frontend: Electron, Tkinter, .NET MAUI
+    - Backend: Flask, FastAPI
+    - Python Library: Flask, FastAPI, transformer (hugging face)
+
+### Week 3
