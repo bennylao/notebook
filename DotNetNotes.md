@@ -1,11 +1,8 @@
 # Dot Net MAUI
 .NET MAUI is a multi-platform framework for creating native desktop and mobile apps with C# and XAML. .NET MAUI is an acronym for Multi-platform Application User Interface. Using .NET MAUI, you can design mobile apps that can run on Windows, Android, iOS, iPadOS, and macOS.
 
-## Fundamentals
+## Fundamental Concept
 Reference: [Create a cross-platform app with .NET MAUI](https://learn.microsoft.com/en-gb/training/modules/build-mobile-and-desktop-apps/)
-
-### NuGet
-NuGet is the package manager of third-party libraries in .NET applications.
 
 ### Technology Stack
 ![DotNetMAUIStack](docs/assets/dotNetMAUIStack.png)
@@ -61,23 +58,248 @@ Other page types are available, and are mostly used for enabling different navig
 #### Views
 A content page typically displays a view. A view enables you to retrieve and present data in a specific manner. The default view for a content page is a `ContentView`, which displays items as-is. Views can be considered as individual UI components (e.g., `Button`, `Label`, `Entry`(Text box)). 
 
-## C# Notes
+## C# and .NET Fundamentals
 
-### Basics
 Comment
 ```cs
 // This is a csharp comment
 ```
 
+### .NET Set Up
+- List all .NET SDKs
+```sh
+dotnet --list-sdks
+```
+- Create a simple .NET project
+```sh
+dotnet new console -f net8.0
+```
+- Run the project
+```sh
+dotnet run
+```
+
+### NuGet
+NuGet is the package manager of third-party libraries in .NET applications.
+
+- Install a NuGet package
+```sh
+dotnet add package <name of package>
+```
+- Remove a package
+```sh
+dotnet remove package <name of dependency>
+```
+- List only the top-level packages
+```sh
+dotnet list package
+```
+- List all dependencies
+```sh
+dotnet list package --include-transitive
+```
+- List all outdated packages
+```sh
+dotnet list package --outdated
+```
+- Restore all the dependencies after creating or cloning a project
+```sh
+dotnet restore
+```
+Note that `dotnet add package <package name>` will try to update the package to its latest version if it has been alredy installed. Optionally, you can pass in `--version=<version number/range>`.
+
+### Basic Methods
 Console print
 ```cs
 // Console print without newline
 Console.Write("Hello World!");
 // Console print with newline at the end
 Console.WriteLine("Hello World!");
+// Console print text with variables
+Console.WriteLine($"This is a string with variable={myVar}");
+```
+
+### XAML
+
+#### Naming elements in a XAML page
+```cs
+<Label Text="Current count: 0"
+        ...
+        x:Name="CounterLabel"
+        ... />
+```
+
+```cs
+count++;
+CounterLabel.Text = $"Current count: {count}";
+```
+
+#### Use an attribute to wire up events
+The event method must meet the following signature requirements:
+
+-   It can't return a value; the method must be `void`.
+-   It must take two parameters; an `object` reference that indicates the object that triggered the event (known as the _sender_), and an `EventArgs` parameter that contains any arguments passed to the event handler by the sender.
+-   The event handler should be `private`. This isn't enforced, but if you make an event handler public it becomes accessible to the outside world, and an action other than the expected event being triggered could invoke it.
+-   The event handler can be `async` if it needs to run asynchronous operations.
+```cs
+public partial class MainPage : ContentPage, IPage
+{
+    public MainPage()
+    {
+        InitializeComponent();
+        Counter.Clicked += OnCounterClicked;
+    }
+
+    ...
+
+    private void OnCounterClicked(object sender, EventArgs e)
+    {
+        ...
+    }
+}
+```
+
+#### Create a MarkUp Extension
+This method's purpose is to supply a value to your XAML markup. In this case, the `FontSize` of all labels in MainPage is `28`. 
+> :warning: **Warning:** Do not push the big red button.
+> [!NOTE]
+ **Note:** The **MyFontSize** field must be a `static` member of the **MainPage** class to allow it to be referenced in the **ProvideValue** method in this way. Good practice implies that in this case, the variable should also be a constant. A `const` value is `static`.
+```cs
+namespace MyMauiApp;
+
+public partial class MainPage : ContentPage
+{
+    public const double MyFontSize = 28;
+
+    public MainPage()
+    {
+        InitializeComponent();
+        ...
+    }
+    ...
+}
+
+public class GlobalFontSizeExtension : IMarkupExtension
+{
+    public object ProvideValue(IServiceProvider serviceProvider)
+    {
+        return MainPage.MyFontSize;
+    }
+}
 ```
 
 
+### Debug and Logs
+-   **System.Console**
+    -   Always enabled and always writes to the console.
+    -   Useful for information that your customer might need to see in the release.
+    -   Because it's the simplest approach, it's often used for ad-hoc temporary debugging. This debug code is often never checked in to source control.
+-   **System.Diagnostics.Trace**
+    -   Only enabled when `TRACE` is defined.
+    -   Writes to attached Listeners, by default, the DefaultTraceListener.
+    -   Use this API when you create logs that will be enabled in most builds.
+-   **System.Diagnostics.Debug**
+    -   Only enabled when `DEBUG` is defined (when in debug mode).
+    -   Writes to an attached debugger.
+    -   Use this API when you create logs that will be enabled only in debug builds.
 
+```cs
+using System.Diagnostics;
 
+Console.WriteLine("This message is readable by the end user.");
+Trace.WriteLine("This is a trace message when tracing the app.");
+Debug.WriteLine("This is a debug message just for developers.");
+```
 
+#### Define TRACE and DEBUG constants
+By default, when an application is running under debug, the `DEBUG` constant is defined. You can control this by adding a `DefineConstants` entry in the project file in a property group. Here's an example of turning on `TRACE` for both `Debug` and `Release` configurations in addition to `DEBUG` for `Debug` configurations.
+
+As an example, add the following to `.csproj` file (double click the app).
+```xml
+<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+</PropertyGroup>
+<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE</DefineConstants>
+</PropertyGroup>
+```
+
+### Consume a REST-based web service
+[Offical Documentation here](https://learn.microsoft.com/en-us/dotnet/maui/data-cloud/rest?view=net-maui-8.0)
+
+- Create the HTTPClient object
+```cs
+public class RestService
+{
+    HttpClient _client;
+    JsonSerializerOptions _serializerOptions;
+
+    public List<TodoItem> Items { get; private set; }
+
+    public RestService()
+    {
+        _client = new HttpClient();
+        _serializerOptions = new JsonSerializerOptions
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            WriteIndented = true
+        };
+    }
+    ...
+}
+```
+
+- GET Method
+```cs
+public async Task<List<TodoItem>> RefreshDataAsync()
+{
+    Items = new List<TodoItem>();
+
+    Uri uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
+    try
+    {
+        HttpResponseMessage response = await _client.GetAsync(uri);
+        if (response.IsSuccessStatusCode)
+        {
+            string content = await response.Content.ReadAsStringAsync();
+            Items = JsonSerializer.Deserialize<List<TodoItem>>(content, _serializerOptions);
+        }
+    }
+    catch (Exception ex)
+    {
+        Debug.WriteLine(@"\tERROR {0}", ex.Message);
+    }
+
+    return Items;
+}
+```
+
+- POST Method
+```cs
+public async Task SaveTodoItemAsync(TodoItem item, bool isNewItem = false)
+{
+    Uri uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
+
+    try
+    {
+        string json = JsonSerializer.Serialize<TodoItem>(item, _serializerOptions);
+        StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        HttpResponseMessage response = null;
+        if (isNewItem)
+            response = await _client.PostAsync(uri, content);
+        else
+            response = await _client.PutAsync(uri, content);
+
+        if (response.IsSuccessStatusCode)
+            Debug.WriteLine(@"\tTodoItem successfully saved.");
+    }
+    catch (Exception ex)
+    {
+        Debug.WriteLine(@"\tERROR {0}", ex.Message);
+    }
+}
+```
+
+## To Do
+https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/
