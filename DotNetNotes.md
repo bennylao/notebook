@@ -161,9 +161,9 @@ public partial class MainPage : ContentPage, IPage
 
 #### Create a MarkUp Extension
 This method's purpose is to supply a value to your XAML markup. In this case, the `FontSize` of all labels in MainPage is `28`. 
-> :warning: **Warning:** Do not push the big red button.
+
 > [!NOTE]
- **Note:** The **MyFontSize** field must be a `static` member of the **MainPage** class to allow it to be referenced in the **ProvideValue** method in this way. Good practice implies that in this case, the variable should also be a constant. A `const` value is `static`.
+> The **MyFontSize** field must be a `static` member of the **MainPage** class to allow it to be referenced in the **ProvideValue** method in this way. Good practice implies that in this case, the variable should also be a constant. A `const` value is `static`.
 ```cs
 namespace MyMauiApp;
 
