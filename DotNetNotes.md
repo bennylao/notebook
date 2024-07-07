@@ -159,11 +159,15 @@ public partial class MainPage : ContentPage, IPage
 }
 ```
 
-#### Create a MarkUp Extension
-This method's purpose is to supply a value to your XAML markup. In this case, the `FontSize` of all labels in MainPage is `28`. 
+#### MarkUp Extension 
+> [!IMPORTANT]
+> The purpose of custom markup extensions is to allow you to handle more complex situations rather than the simple static case. For example, you might need to dynamically change the font size based on device form factor.
 
 > [!NOTE]
 > The **MyFontSize** field must be a `static` member of the **MainPage** class to allow it to be referenced in the **ProvideValue** method in this way. Good practice implies that in this case, the variable should also be a constant. A `const` value is `static`.
+
+- Creating a markup extension
+This method's purpose is to supply a value to your XAML markup. In this case, the `FontSize` of all labels in MainPage is `28`. 
 ```cs
 namespace MyMauiApp;
 
@@ -186,6 +190,41 @@ public class GlobalFontSizeExtension : IMarkupExtension
         return MainPage.MyFontSize;
     }
 }
+```
+- Applying the markup extension to a control in XAML
+```xml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mycode="clr-namespace:MyMauiApp"
+             x:Class="MyMauiApp.MainPage">
+```
+```xml
+<Label Text="Hello, World!"
+            Grid.Row="0"
+            SemanticProperties.HeadingLevel="Level1"
+            FontSize="{mycode:GlobalFontSize}"
+            HorizontalOptions="CenterAndExpand"/>
+```
+- The StaticExtension class
+
+.NET MAUI already provides a more generalized extension that allows you to reference any static value in your code.
+```cs
+[ContentProperty ("Member")]
+public class StaticExtension : IMarkupExtension
+{
+    public string Member {get; set;}
+    public object ProvideValue (IServiceProvider serviceProvider)
+    {
+        ...
+    }
+}
+```
+```xml
+<Label Text="Hello, World!"
+            Grid.Row="0"
+            SemanticProperties.HeadingLevel="Level1"
+            FontSize="{x:Static Member=mycode:MainPage.MyFontSize}"
+            HorizontalOptions="CenterAndExpand"/>
 ```
 
 

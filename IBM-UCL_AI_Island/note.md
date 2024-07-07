@@ -44,9 +44,7 @@ Provision this as an extension for WatsonX under the IBM-UCL AI-Islands name.
 
 ## meeting notes
 
-- we have to use c# to code the logic behind the app, we have to design the classes and models, like what we did in the python module
-- MVVM (model, view, view model)
-- .NET support ML thorough ML.net, but it seems like it cannot integrate library like hugging face. we may want to run a local server with fastAPI and we call the api only when we need it
+
 
 ## Weekly Notes
 
@@ -60,3 +58,32 @@ Understand project brief
     - Python Library: Flask, FastAPI, transformer (hugging face)
 
 ### Week 3
+
+### Week 4
+- UI design
+
+### Week 5
+- subprocess for each model (free up memory, track system resource usage)
+
+### Report Writing
+
+plan content list
+first draft of intro
+
+### To mention
+- dict or array
+
+
+
+### To do
+
+- downlaod hugging face model into custom directory without running it
+- put fastapi into dotnet
+- prompt tuning
+- Rag
+- hugging face model card
+- data.json use dict format
+
+- abstract and interface
+- access type
+- 
