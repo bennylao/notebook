@@ -79,6 +79,11 @@ dotnet new console -f net8.0
 dotnet run
 ```
 
+### dotNet gitignore
+```sh
+dotnet new gitignore
+```
+
 ### NuGet
 NuGet is the package manager of third-party libraries in .NET applications.
 

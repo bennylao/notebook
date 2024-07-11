@@ -23,7 +23,73 @@ Provision this as an extension for WatsonX under the IBM-UCL AI-Islands name.
 - SkillsBuild: https://academic.ibm.com/a2mt/downloads
 - .NET MAUI: https://learn.microsoft.com/en-gb/dotnet/maui/what-is-maui?view=net-maui-8.0
 
-## Random Note
+## Hugging Face
+load a model card from the hub
+
+```python
+from huggingface_hub import ModelCard
+
+card = ModelCard.load('nateraw/vit-base-beans')
+```
+
+## Weekly Notes
+
+### Week 1 (03 June - 09 June)
+Understand project brief
+
+### Week 2 (10 June - 16 June)
+- tech review
+    - Frontend: Electron, Tkinter, .NET MAUI
+    - Backend: Flask, FastAPI
+    - Python Library: Flask, FastAPI, transformer (hugging face)
+
+### Week 3 (17 June - 23 June)
+- after liaison with client, we decided to use dotnet as frontend and fastapi as backend
+
+
+### Week 4 (24 June - 30 June)
+- UI design
+
+### Week 5 (01 July - 07 July)
+- subprocess for each model (free up memory, track system resource usage)
+- class design
+- project structure
+
+### Week 7 (08 July - 14 July)
+- persona, use case
+- real time speech to text issue
+
+
+### Week 8 (15 July - 21 July)
+
+
+## Notes
+
+### Report Writing
+plan content list
+first draft of intro
+
+### To mention
+- pytest
+- updated model control for new data structure
+- minor update on jsonhandler
+
+### Issues
+- connection issue when downloading models
+
+### meeting notes
+
+## To do
+
+- [x] downlaod hugging face model into custom directory without running it
+- [x] data.json use dict format
+- [x] sentiment analysis
+- [x] translation models
+- [] speech2text text2speech models
+- [] realtime speech2text
+
+
+### Random Note
 - problem statement
 - Map: who why how
 - end user, persona, customer journey, 
@@ -36,54 +102,3 @@ Provision this as an extension for WatsonX under the IBM-UCL AI-Islands name.
 
 - small model extract the important info from the doc and then offload it into watsonx
 
-## To-do
-
-- Auto fetching LLM models
-- .NET MAUI
-- Integration between Python and .NET
-
-## meeting notes
-
-
-
-## Weekly Notes
-
-### Week 1
-Understand project brief
-
-### Week 2
-- tech review
-    - Frontend: Electron, Tkinter, .NET MAUI
-    - Backend: Flask, FastAPI
-    - Python Library: Flask, FastAPI, transformer (hugging face)
-
-### Week 3
-
-### Week 4
-- UI design
-
-### Week 5
-- subprocess for each model (free up memory, track system resource usage)
-
-### Report Writing
-
-plan content list
-first draft of intro
-
-### To mention
-- dict or array
-
-
-
-### To do
-
-- downlaod hugging face model into custom directory without running it
-- put fastapi into dotnet
-- prompt tuning
-- Rag
-- hugging face model card
-- data.json use dict format
-
-- abstract and interface
-- access type
-- 
