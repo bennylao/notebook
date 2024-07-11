@@ -85,8 +85,8 @@ first draft of intro
 - [x] data.json use dict format
 - [x] sentiment analysis
 - [x] translation models
-- [] speech2text text2speech models
-- [] realtime speech2text
+- [ ] speech2text text2speech models
+- [ ] realtime speech2text
 
 
 ### Random Note
