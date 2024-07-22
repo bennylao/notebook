@@ -23,6 +23,9 @@ Provision this as an extension for WatsonX under the IBM-UCL AI-Islands name.
 - SkillsBuild: https://academic.ibm.com/a2mt/downloads
 - .NET MAUI: https://learn.microsoft.com/en-gb/dotnet/maui/what-is-maui?view=net-maui-8.0
 
+- pydantic Annotated: https://docs.pydantic.dev/latest/concepts/json_schema/#generating-json-schema
+- huggingface languages: https://huggingface.co/languages
+
 ## Hugging Face
 load a model card from the hub
 
@@ -61,7 +64,11 @@ Understand project brief
 
 
 ### Week 8 (15 July - 21 July)
-
+- pytest
+- trust remote code
+- another library for reranker
+- child child process works on production model but not in dev mode
+- updated model control for new data structure
 
 ## Notes
 
@@ -69,10 +76,24 @@ Understand project brief
 plan content list
 first draft of intro
 
-### To mention
-- pytest
-- updated model control for new data structure
-- minor update on jsonhandler
+### To mention (to group)
+- fastapi route should use annotated [reference link](https://fastapi.tiangolo.com/tutorial/query-params-str-validations/#__tabbed_6_1)
+- list all the possible config parameters with its default value in model index
+    - some models requires extra default config to run
+    - there should be a place to record all possible config parameters, otherwise dev or user would not know which and what parameters they can modify
+    - unless they look into the model card
+
+### To mention (to supervisor)
+- models which requires running remote codes during download does not work with fastapi dev
+- models are limited to those support pipline only (cannot unify every kind of models, every model requires its own ways to do inference)
+- app will only provide a selection of models from hugging face only
+    - every model has specific configuration, if we fetch all the models from huggingface, some of them might not be able to work
+    - also every model has to be indexed in a particular format and this is difficult to use retreieve automatically
+    - better for non-technical users, less choice, they don't have to compare 100+ models
+- child model for different nlp tasks under transformer model
+
+### Questions
+1. watson model in model index have pipeline tag?
 
 ### Issues
 - connection issue when downloading models
