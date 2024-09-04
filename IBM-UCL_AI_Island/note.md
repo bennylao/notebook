@@ -35,6 +35,14 @@ from huggingface_hub import ModelCard
 card = ModelCard.load('nateraw/vit-base-beans')
 ```
 
+## Types of models added to the application
+- text classification (sentiment analysis, product rating)
+- zero shot classification (custom labels)
+- reranker
+- translation
+- speech2text
+- text2speech
+
 ## Weekly Notes
 
 ### Week 1 (03 June - 09 June)
@@ -69,6 +77,27 @@ Understand project brief
 - another library for reranker
 - child child process works on production model but not in dev mode
 - updated model control for new data structure
+- adding different types of nlp models into the application
+
+- models are limited to those support pipline only (cannot unify every kind of models, every model requires its own ways to do inference)
+
+- app will only provide a selection of models from hugging face only
+    - every model has specific configuration, they have to be indexed in a particular format. 
+    if we fetch all the models from huggingface, some of them might not be able to work 
+    - better for non-technical users, as many of the models on hugging face are actually fine tune from the same base model, 
+    as the result, they don't have to compare 100+ models that are very similar
+
+- models which requires running remote codes during download does not work with fastapi dev
+
+### Week 9 (22 July - 28 July)
+- added speech2text, text2speech models and zero shot classification models
+- research on training
+- training dataset is not uploaded into the application. the dataset has to be tokenised before training but the tokeniser used for each models are different. storing the datasets in the application is not useful and cannot be reused. unlike rag dataset and image datasets.
+
+
+## playground config
+first attempt: new observableCollection for playground config and bind the picker to each row
+however it leads to unexpected error
 
 ## Notes
 
@@ -78,22 +107,45 @@ first draft of intro
 
 ### To mention (to group)
 - fastapi route should use annotated [reference link](https://fastapi.tiangolo.com/tutorial/query-params-str-validations/#__tabbed_6_1)
+
 - list all the possible config parameters with its default value in model index
     - some models requires extra default config to run
     - there should be a place to record all possible config parameters, otherwise dev or user would not know which and what parameters they can modify
     - unless they look into the model card
 
+- what does generator do?
+
+- task in config
+- sentence prefix
+
 ### To mention (to supervisor)
-- models which requires running remote codes during download does not work with fastapi dev
-- models are limited to those support pipline only (cannot unify every kind of models, every model requires its own ways to do inference)
-- app will only provide a selection of models from hugging face only
-    - every model has specific configuration, if we fetch all the models from huggingface, some of them might not be able to work
-    - also every model has to be indexed in a particular format and this is difficult to use retreieve automatically
-    - better for non-technical users, less choice, they don't have to compare 100+ models
-- child model for different nlp tasks under transformer model
+- looked into huggingface accelerator
+the accelerator allows the models to run faster and use less system memory.
+it is particularly useful for large model like LLMs, as it significantly reduce the computational time for model prediction. hence we decided to apply it on every model.
+
+- added more categories of nlp models, including text to speech and zero shot classification. 
+
+zero shot classification is similar to sentiment analysis model, but instead of outputing only 
+positive negatie and neutral, it allows custom topics and labels. for example
+
+text to speech model takes texts as input and generate an audio file
+since different text2speech models take different config and the ways to use them are also very different,
+so it took me a bit of time to test those model.
+
+some of the text2speech models requires speaker embedding to generate audio. 
+speaker embedding is like a array recoding the characteristics of the speaker.
+currently, i have saved a speaker embedding in the app and served as a default embedding.
+
+later in this week, i will make the functionality for user to select4 different speaker embedding from the dataset upload their own speaker embedding if they have one
+
+- model training
+- it only supports text classifcation and translation.
+- it supports some of the text to speech models
+- most of the other models require custom script for training and it is very difficult to unify the codes for types of training
+- training is only allow for sentiment analysis model and translation model
 
 ### Questions
-1. watson model in model index have pipeline tag?
+
 
 ### Issues
 - connection issue when downloading models
@@ -106,7 +158,7 @@ first draft of intro
 - [x] data.json use dict format
 - [x] sentiment analysis
 - [x] translation models
-- [ ] speech2text text2speech models
+- [x] speech2text text2speech models
 - [ ] realtime speech2text
 
 
