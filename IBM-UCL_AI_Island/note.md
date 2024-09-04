@@ -175,3 +175,8 @@ later in this week, i will make the functionality for user to select4 different 
 
 - small model extract the important info from the doc and then offload it into watsonx
 
+### mention
+
+- fastapi multiple routes
+- deployment python environment
+- speech2text model input
