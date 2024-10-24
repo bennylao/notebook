@@ -106,17 +106,6 @@ plan content list
 first draft of intro
 
 ### To mention (to group)
-- fastapi route should use annotated [reference link](https://fastapi.tiangolo.com/tutorial/query-params-str-validations/#__tabbed_6_1)
-
-- list all the possible config parameters with its default value in model index
-    - some models requires extra default config to run
-    - there should be a place to record all possible config parameters, otherwise dev or user would not know which and what parameters they can modify
-    - unless they look into the model card
-
-- what does generator do?
-
-- task in config
-- sentence prefix
 
 ### To mention (to supervisor)
 - looked into huggingface accelerator
