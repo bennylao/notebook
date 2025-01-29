@@ -23,3 +23,8 @@ python3 -m venv .venv
 ```bash
 deactivate
 ```
+
+### Auto Generate Requirements.txt
+```bash
+pip list  --format=freeze > requirements.txt
+```
