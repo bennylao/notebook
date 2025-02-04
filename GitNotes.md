@@ -26,7 +26,9 @@ git switch <branch-name>
 git checkout <branch-name>
 ```
 
-> [!NOTE] `checkout` vs `switch`
+> [!NOTE]
+>
+> `checkout` vs `switch`
 >
 > - Purpose: `checkout` is used for both switching branches and restoring file states, whereas `switch` is specifically tailored for switching branches.
 > - Safety: `switch` does not allow you to accidentally overwrite changes, as it is designed to handle branch operations exclusively.
