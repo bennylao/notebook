@@ -3,27 +3,33 @@
 ## Python Conventions
 
 ### Naming Variable
+
 Variable must begin with a letter or underscore. For example, this is not a valid name
+
 ```python
 # This is not a valid name
 56_var
 ```
+
 Any common unicode character can be used for naming as well.
 
-
 Python reserved word list cannot be used for naming. To print all the python reserved word list:
+
 ```python
 import keyword
 
 print(keyboard.kwlist)
 ```
+
 A better way to list all the keywords
+
 ```python
 import keyword
 help('keywords')
 ```
 
 ### Comments
+
 ```python
 # Inline comments
 
@@ -34,11 +40,11 @@ Block of comments
 
 ## Basic Data Types
 
-```int```: Integer <br>
-```float```: Float <br>
-```complex```: Complex Number <br>
-```bool```: Boolean <br>
-```str```: String <br>
+- ```int```: Integer
+- ```float```: Float
+- ```complex```: Complex Number
+- ```bool```: Boolean
+- ```str```: String
 
 ```python
 a = 10 # integer
@@ -57,13 +63,15 @@ d = "string" # string
 
 ```int(var)```, ```float(var)```, ```str(var)``` convert data types.
 
-
 ### String
+
 ```python
 print("text")
 print('text')
 ```
+
 If we want to print out the quote symbols:
+
 ```python
 # Use of different types of quotes
 print("This is a 'example' string.")
@@ -80,17 +88,19 @@ print("This is a \"example\" string.")
 ```
 
 #### Escape Characters
+
 ```\n``` New line
 
 #### String Operators
-```+```: Concatenates strA and strB <br>
-```*```: Duplicates the string n times <br>
-```str[i]```: Returns the characters from the index at i <br>
-```str[i:j]```: Returns the characters from the index in the range i to j where j is excluded <br>
-```str_a in str_b```: Returns True if str_a exist in str_b <br>
-```a not in str_b```: Returns True if str_a does not exist in str_b <br>
-```r"\n"```: Prevents escape characters from being rander
-```"{:d}".format(integer)```: The string formatting operator
+
+- ```+```: Concatenates strA and strB
+- ```*```: Duplicates the string n times
+- ```str[i]```: Returns the characters from the index at i
+- ```str[i:j]```: Returns the characters from the index in the range i to j where j is excluded
+- ```str_a in str_b```: Returns True if str_a exist in str_b
+- ```a not in str_b```: Returns True if str_a does not exist in str_b
+- ```r"\n"```: Prevents escape characters from being rander
+- ```"{:d}".format(integer)```: The string formatting operator
 
 ```python
 print("I am " + "string")
@@ -113,14 +123,16 @@ print(r"First Line\n Still First Line")
 num = 7
 print("There are %d days in a week" %num)
 ```
+
 #### String Formatting Operators
-```{:d}```: Integer <br>
-```{:s}```: String <br>
-```{:f}```: Floating point numbers <br>
-```{:.2f}```: Floating point numbers with fixed amount of decimal places <br>
-```{:b}```: Integer in binary (2-bit) <br>
-```{:o}```: Integer in octal (8-bit) <br>
-```{:x}```: Integer in hex (16-bit) <br>
+
+- ```{:d}```: Integer
+- ```{:s}```: String
+- ```{:f}```: Floating point numbers
+- ```{:.2f}```: Floating point numbers with fixed amount of decimal places
+- ```{:b}```: Integer in binary (2-bit)
+- ```{:o}```: Integer in octal (8-bit)
+- ```{:x}```: Integer in hex (16-bit)
 
 ```python
 print("String: {:s}; Integer: {:d}".format("Hello", 100))
@@ -141,13 +153,16 @@ print('{:*^30}'.format('centered'))  # use '*' as a fill char
 ```
 
 #### F-Strings
+
 ```f"string {var}"```: easier F-String
+
 ```python
 num = 7
 print(f"There are {num} days in a week")
 ```
 
 #### String Functions
+
 ```python
 my_string = "This is a sample string."
 my_string.index("sample", 5, 20) # substring, start_pos, end_pos
@@ -157,6 +172,7 @@ my_string.index("apple") # Valueerror
 ## Operator
 
 ### Arithmetic Operators (Mathematical Operators)
+
 ```+```: addition
 ```-```: subtraction
 ```*```: multiplication
@@ -166,17 +182,20 @@ my_string.index("apple") # Valueerror
 ```//```: floor division
 
 ### Logical Operator
+
 ```and```
 ```or```
 ```not```
 
 ### Bitwise Operator
-```&```: Bitwise AND <br>
-```|```: Bitwise OR <br>
-```^```: Bitwise XOR <br>
-```~```: Bitwise NOT <br>
-```<<```: Bitwise left shift <br>
-```>>```: Bitwise right shift <br>
+
+- ```&```: Bitwise AND
+- ```|```: Bitwise OR
+- ```^```: Bitwise XOR
+- ```~```: Bitwise NOT
+- ```<<```: Bitwise left shift
+- ```>>```: Bitwise right shift
+
 ```python
 x = 0b10100
 y = 0b01011
@@ -204,21 +223,25 @@ print(a >> 1)
 print(b << 2)
 ```
 
-
 ### Membership Operator
+
 ```in```
 ```not in```
 
 ### Identity Operator
+
 ```is```
 ```is not```
 
 ### Operator Precedence
+
 ![operator precedence](docs/assets/operator_precedence.png)
 
 ### Associativity of Operator of the same priority
+
 if operator has the same priority, it usually evaluated from *LEFT to RIGHT*.
 However, for exponent operator ```**```, it is evaluated from *RIGHT to LEFT*.
+
 ```python
 # LEFT-RIGHT associativity
 print(5 + 6 - 7) # output is 4
@@ -228,17 +251,22 @@ print(2 ** 3 ** 2) # output is 512
 ```
 
 ## Common Built-in Functions
-```type(var)``` Return the type of variable<br>
-```id(var)``` Return the id of variable<br>
+
+- ```type(var)``` Return the type of variable
+- ```id(var)``` Return the id of variable
 
 ### If
+
 ```if```, ```elif```, ```else```.
 
 Shorthand if
+
 ```python
 if (x == y): print("x and y are equal")
 ```
+
 Shorthand if-else
+
 ```python
 print("true") if x > y else print("false")
 ```
@@ -263,16 +291,17 @@ else:
 
 ### List
 
-```len(my_list)```: Returns length of the list <br>
-```my_list.append(item)```: Add item to the end of the list <br>
-```my_list.extend(item1, item2)```: Add multiple items to the end of the list <br>
-```my_list.insert(i, item)```: Insert item into the position at index i <br>
-```my_list.remove(item)```: Remove item from the list <br>
-```my_list.pop(i)```: Remove item from the position at index i, if no index is given, the last item will be removed <br>
-```my_list.index(item)```: Return index of an item in the list <br>
-```my_list.reverse()```: Reverse a list <br>
-```my_list.count()```: Count the number of item in list <br>
-```my_list.sort()```: Sort my_list. Note that it returns NOTHING! <br>
+- ```len(my_list)```: Returns length of the list
+- ```my_list.append(item)```: Add item to the end of the list
+- ```my_list.extend(item1, item2)```: Add multiple items to the end of the list
+- ```my_list.insert(i, item)```: Insert item into the position at index i
+- ```my_list.remove(item)```: Remove item from the list
+- ```my_list.pop(i)```: Remove item from the position at index i, if no index is given, the last item will be removed
+- ```my_list.index(item)```: Return index of an item in the list
+- ```my_list.reverse()```: Reverse a list
+- ```my_list.count()```: Count the number of item in list
+- ```my_list.sort()```: Sort my_list. Note that it returns NOTHING!
+
 ```python
 mylist.sort(); # sort the list
 
@@ -308,7 +337,9 @@ print(type(int_tup)) # type is int
 ```
 
 ### Set
+
 set is an unordered collection with no duplicate elements and set is immutable.
+
 ```python
 myset = {1, 2, 3}
 
@@ -317,6 +348,7 @@ print(new_Set) # it prints {a, b, c} or {c, a, b} or other combinations.
 ```
 
 #### Set Operator
+
 ```python
 setA = {1, 2, 3, 4}
 setB = {2, 4, 6, 8}
@@ -336,19 +368,23 @@ mydict = {"key1": value1, "key2", value2}
 ```
 
 ## File
+
 ```python
 # to open a file
 f = open(file, "mode") # default mode is r
 ```
-```file.name```: return the file name<br>
-```file.closed```: return True if file is closed<br>
-```file.mode```: return the access mode of the file
+
+- ```file.name```: return the file name
+- ```file.closed```: return True if file is closed
+- ```file.mode```: return the access mode of the file
 
 ### Access Mode
-```r```: read only<br>
-```w```: write only<br>
-```a```: append<br>
+
+- ```r```: read only
+- ```w```: write only
+- ```a```: append
 Example:
+
 ```python
 lines = ["This is my FIRST line.\n", "This is my SECOND line.\n", "This is my THIR D line.\n"]
 f = open("mydata.txt","w") # overwrite the file if the file exists
@@ -357,7 +393,9 @@ f.close()
 ```
 
 ## OOP
+
 Example:
+
 ```python
 class Person:
 
@@ -386,7 +424,9 @@ class Person:
         """ Greeting by the robot """
         print("Greetings, my name is {}.".format(self.name))
 ```
+
 ### Variables
+
 ```public```: default variable type, exposed anywhere
 ```_internalVariable```: declared as an internal variable, but it can still be access outside
 ```__privateVariable```: cannot be access out of the class
@@ -397,6 +437,7 @@ The other way is ```object._class__privateVariable```. However, Name mangling is
 the private methods and attributes of their superclasses. It's not designed to prevent deliberate access from outside.
 
 Example:
+
 ```python
 class Person:
     def __init__(self, age):
@@ -408,6 +449,7 @@ print(p._Person__age) # access the private variable
 ```
 
 ### Dynamically Creating Classes
+
 ```python
 def greet(self):
     return "Hello!"
@@ -420,21 +462,30 @@ print(p.greet()) # Output: Hello!
 ```
 
 ### Type of Methods
+
 #### Object Methods
+
 Object method is related to the specific object, **it has access to instance or class attributes**
+
 ```python
 def object_method():
     pass
 ```
+
 #### Class Methods
+
 Class method is related to the specific class, **it has access to class attributes but not any instance attributes**
+
 ```python
 @classmethod
 def class_method():
     pass
 ```
+
 #### Static Methods
+
 Static method is related to a class, but **it does not have access to any instance or class attributes**
+
 ```python
 @staticmethod
 def static_method():
@@ -453,13 +504,14 @@ pkg_root/
 |   ├── module.py
 ```
 
-### __init__.py
+### **init**.py
 
 ```__init__.py``` is used to mark the directory as a package.
 
-
 ## Logging
+
 The is five levels of logging.
+
 ```python
 import logging
 
@@ -496,6 +548,7 @@ logging.warning("This is a warning message")
 ```
 
 ## Other Functions
+
 ```enumerate()```: Create enumerate object of a list
 
 ```python
@@ -518,10 +571,8 @@ print(list(enumerate(fruits, 2)))
 
 ## External Libraries
 
-### Pandas
-
-
 ### Numpy
+
 ```python
 import numimport numpy as np
 
@@ -559,6 +610,7 @@ print(array_a.shape)
 ```
 
 ## Pandas
+
 ```python
 import pandas as pd
 
@@ -583,13 +635,8 @@ print(df)
 
 [Link to Tensor Tutorial](https://pytorch.org/tutorials/beginner/basics/tensorqs_tutorial.html)
 
-#### To import dependencies
-```python
-import torch
-import numpy as np
-```
-
 #### Initialising a Tensor
+
 ```python
 # initialise new Tensor with list
 data = [[1, 2],[3, 4]]
@@ -618,6 +665,7 @@ print(f"Zeros Tensor: \n {zeros_tensor}")
 ```
 
 #### Attributes of a Tensor
+
 ```python
 tensor = torch.rand(3,4)
 
@@ -629,6 +677,7 @@ print(f"Device tensor is stored on: {tensor.device}")
 #### Operations on Tensors
 
 Tensors are created on the CPU but they can also be moved to GPU by
+
 ```python
 # We move our tensor to the GPU if available
 if torch.cuda.is_available():
@@ -636,7 +685,8 @@ if torch.cuda.is_available():
 ```
 
 ##### Arithmetic Operations
-```
+
+```python
 # This computes the matrix multiplication between two tensors. y1, y2, y3 will have the same value
 # ``tensor.T`` returns the transpose of a tensor
 y1 = tensor @ tensor.T
